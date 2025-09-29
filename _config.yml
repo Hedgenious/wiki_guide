@@ -1,0 +1,76 @@
+# GitHub Pages configuration for DaDaSchool Wiki Guide
+title: DaDaSchool Wiki Guide
+description: Полное руководство по работе с Википедией для детей и начинающих пользователей
+author: DaDaSchool
+email: info@dadaschool.ru
+
+# Site settings
+baseurl: "/wiki_guide"
+url: "https://hedgenious.github.io"
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+permalink: pretty
+
+# Navigation
+navigation:
+  - title: Главная
+    url: /
+  - title: Регистрация
+    url: /registration.html
+  - title: Редактирование
+    url: /editing.html
+  - title: Никнейм
+    url: /nickname.html
+  - title: Лучшие практики
+    url: /best-practices.html
+
+# Collections
+collections:
+  guides:
+    output: true
+    permalink: /:name/
+
+# Defaults
+defaults:
+  - scope:
+      path: ""
+      type: "guides"
+    values:
+      layout: "guide"
+
+# Plugins
+plugins:
+  - jekyll-sitemap
+  - jekyll-feed
+  - jekyll-seo-tag
+
+# SEO
+seo:
+  type: "WebSite"
+  name: "DaDaSchool Wiki Guide"
+  description: "Полное руководство по работе с Википедией для детей и начинающих пользователей"
+  url: "https://hedgenious.github.io/wiki_guide"
+  image: "/wiki_guide/assets/og-image.jpg"
+
+# Social media
+social:
+  name: DaDaSchool Wiki Guide
+  links:
+    - https://github.com/hedgenious/wiki_guide
+    - https://dadaschool.ru
+
+# Analytics (optional)
+# google_analytics: UA-XXXXXXXXX-X
+
+# Exclude from build
+exclude:
+  - README.md
+  - CONTRIBUTING.md
+  - LICENSE
+  - screenshots/
+  - "*.md"
+  - node_modules/
+  - Gemfile
+  - Gemfile.lock
