@@ -6,6 +6,12 @@
     <title>DaDaSchool Wiki Guide - Руководство по работе с Википедией</title>
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        @font-face {
+            font-family: 'Coolvetica Regular';
+            src: url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        }
+    </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
@@ -13,13 +19,12 @@
         <div class="container">
             <div class="header-content">
                 <h1 class="logo">
-                    <i class="fas fa-book-open"></i>
+                    <img src="logo/logo_dada_2.svg" alt="DaDaSchool" class="logo-image">
                     DaDaSchool Wiki Guide
                 </h1>
                 <nav class="nav">
                     <a href="#materials" class="nav-link">Материалы</a>
                     <a href="#guides" class="nav-link">Руководства</a>
-                    <a href="#community" class="nav-link">Сообщество</a>
                     <a href="#about" class="nav-link">О проекте</a>
                     <a href="faq.html" class="nav-link">FAQ</a>
                 </nav>
@@ -112,7 +117,7 @@
                         </div>
                         <h3>Качество изображений</h3>
                         <p>Требования к качеству и обработке изображений</p>
-                        <a href="image_quality_requirements.md" class="material-link">Читать руководство</a>
+                        <a href="image-quality.html" class="material-link">Читать руководство</a>
                     </div>
 
                     <div class="material-card">
@@ -121,7 +126,7 @@
                         </div>
                         <h3>Формат цитирования</h3>
                         <p>Правила оформления источников по ГОСТ</p>
-                        <a href="citation_format_gost.md" class="material-link">Читать руководство</a>
+                        <a href="citation-format.html" class="material-link">Читать руководство</a>
                     </div>
 
                     <div class="material-card">
@@ -130,7 +135,7 @@
                         </div>
                         <h3>Язык и стиль</h3>
                         <p>Язык и стиль написания для Википедии</p>
-                        <a href="wikipedia_language_style.md" class="material-link">Читать руководство</a>
+                        <a href="language-style.html" class="material-link">Читать руководство</a>
                     </div>
 
                     <div class="material-card">
@@ -139,7 +144,7 @@
                         </div>
                         <h3>Подбор источников</h3>
                         <p>Руководство по поиску и верификации информации</p>
-                        <a href="information_sources_guide.md" class="material-link">Читать руководство</a>
+                        <a href="sources-guide.html" class="material-link">Читать руководство</a>
                     </div>
                 </div>
             </div>
@@ -180,49 +185,6 @@
             </div>
         </section>
 
-        <section id="community" class="section">
-            <div class="container">
-                <h2 class="section-title">📢 Сообщество</h2>
-                
-                <div class="community-content">
-                    <div class="community-card">
-                        <div class="community-icon">
-                            <i class="fab fa-github"></i>
-                        </div>
-                        <h3>GitHub</h3>
-                        <p>Исходный код проекта и возможность внести вклад</p>
-                        <a href="https://github.com/username/wiki_guide" class="community-link">
-                            <i class="fab fa-github"></i>
-                            Перейти на GitHub
-                        </a>
-                    </div>
-
-                    <div class="community-card">
-                        <div class="community-icon">
-                            <i class="fas fa-bug"></i>
-                        </div>
-                        <h3>Сообщить об ошибке</h3>
-                        <p>Нашли ошибку? Создайте Issue на GitHub</p>
-                        <a href="https://github.com/username/wiki_guide/issues" class="community-link">
-                            <i class="fas fa-bug"></i>
-                            Создать Issue
-                        </a>
-                    </div>
-
-                    <div class="community-card">
-                        <div class="community-icon">
-                            <i class="fas fa-heart"></i>
-                        </div>
-                        <h3>Внести вклад</h3>
-                        <p>Хотите улучшить проект? Изучите CONTRIBUTING.md</p>
-                        <a href="CONTRIBUTING.md" class="community-link">
-                            <i class="fas fa-heart"></i>
-                            Как помочь
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </section>
 
         <section id="about" class="section">
             <div class="container">
@@ -279,17 +241,15 @@
                 <div class="footer-section">
                     <h3>Быстрые ссылки</h3>
                     <ul>
-                        <li><a href="registration_guide.md">Регистрация</a></li>
-                        <li><a href="editing_guide.md">Редактирование</a></li>
-                        <li><a href="best_practices.md">Практики</a></li>
+                        <li><a href="registration.html">Регистрация</a></li>
+                        <li><a href="editing.html">Редактирование</a></li>
+                        <li><a href="best-practices.html">Практики</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
                     <h3>Поддержка</h3>
                     <ul>
-                        <li><a href="faq.md">FAQ</a></li>
-                        <li><a href="CONTRIBUTING.md">Внести вклад</a></li>
-                        <li><a href="https://github.com/username/wiki_guide/issues">Сообщить об ошибке</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
                     </ul>
                 </div>
             </div>

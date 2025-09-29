@@ -56,7 +56,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }, observerOptions);
 
     // Observe all cards for animation
-    const cards = document.querySelectorAll('.material-card, .guide-card, .community-card');
+    const cards = document.querySelectorAll('.material-card, .guide-card');
     cards.forEach(card => {
         card.style.opacity = '0';
         card.style.transform = 'translateY(30px)';
@@ -90,14 +90,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Track clicks on community links
-    const communityLinks = document.querySelectorAll('.community-link');
-    communityLinks.forEach(link => {
-        link.addEventListener('click', function() {
-            const communityName = this.closest('.community-card').querySelector('h3').textContent;
-            trackClick(this, `Community: ${communityName}`);
-        });
-    });
 
     // Add loading animation
     window.addEventListener('load', function() {
