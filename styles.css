@@ -1,3 +1,21 @@
+/* 
+ЦВЕТОВАЯ СХЕМА:
+================
+
+ОСНОВНЫЕ ЦВЕТА (2):
+- Основной синий: #1E4EBD (rgb(30, 78, 189))
+- Светло-кремовый фон: #F8F6ED (rgb(248, 246, 237))
+
+ДОПОЛНИТЕЛЬНЫЕ ЦВЕТА (2):
+- Дополнительный синий: #2149B1 (rgb(33, 73, 177))
+- Светло-голубой акцент: #BFE0F7 (rgb(191, 224, 247))
+
+ДОПОЛНИТЕЛЬНЫЕ АКЦЕНТЫ:
+- Желтый акцент: #F7E080 (rgb(247, 224, 128))
+- Зеленовато-желтый: #EED16B (rgb(238, 209, 107))
+- Светло-зеленовато-желтый: #BFD760 (rgb(191, 215, 96))
+*/
+
 /* Reset and base styles */
 * {
     margin: 0;
@@ -10,6 +28,7 @@ body {
     line-height: 1.6;
     color: #1E4EBD;
     background-color: #F8F6ED;
+    padding-top: 80px; /* Отступ для фиксированной шапки */
 }
 
 .container {
@@ -23,10 +42,20 @@ body {
     background: linear-gradient(135deg, #1E4EBD 0%, #2149B1 100%);
     color: white;
     padding: 1rem 0;
-    position: sticky;
+    position: fixed;
     top: 0;
+    left: 0;
+    right: 0;
     z-index: 1000;
     box-shadow: 0 2px 20px rgba(30, 78, 189, 0.2);
+    transition: all 0.3s ease;
+}
+
+/* Эффект при скроллинге */
+.header.scrolled {
+    background: rgba(30, 78, 189, 0.95);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 30px rgba(30, 78, 189, 0.3);
 }
 
 .header-content {
@@ -1100,6 +1129,70 @@ html {
     margin-bottom: 1rem;
 }
 
+/* Screenshot styles */
+.screenshot-container {
+    margin: 2rem 0;
+    text-align: center;
+    background: #F7F6ED;
+    border: 1px solid #BFE0F7;
+    border-radius: 12px;
+    padding: 1.5rem;
+}
+
+.screenshot {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(30, 78, 189, 0.15);
+    border: 1px solid #BFE0F7;
+    transition: transform 0.3s ease;
+}
+
+.screenshot:hover {
+    transform: scale(1.02);
+}
+
+.screenshot-caption {
+    margin-top: 1rem;
+    font-style: italic;
+    color: #4A5568;
+    font-size: 0.9rem;
+}
+
+.screenshot-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.screenshot-item {
+    background: #F7F6ED;
+    border: 1px solid #BFE0F7;
+    border-radius: 12px;
+    padding: 1.5rem;
+    text-align: center;
+}
+
+.screenshot-item img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(30, 78, 189, 0.1);
+}
+
+.screenshot-item h4 {
+    color: #1E4EBD;
+    margin: 1rem 0 0.5rem;
+    font-size: 1.1rem;
+}
+
+.screenshot-item p {
+    color: #4A5568;
+    font-size: 0.9rem;
+    margin: 0;
+}
+
 /* Responsive design for content pages */
 @media (max-width: 768px) {
     .content-wrapper {
@@ -1131,5 +1224,17 @@ html {
     
     .template-examples {
         grid-template-columns: 1fr;
+    }
+    
+    .screenshot-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .screenshot-container {
+        padding: 1rem;
+    }
+    
+    .screenshot {
+        max-width: 100%;
     }
 }

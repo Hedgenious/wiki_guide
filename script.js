@@ -29,6 +29,14 @@ document.addEventListener('DOMContentLoaded', function() {
     window.addEventListener('scroll', function() {
         const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
         
+        // Добавляем класс при скроллинге
+        if (scrollTop > 50) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
+        
+        // Скрываем/показываем шапку при скроллинге
         if (scrollTop > lastScrollTop && scrollTop > 100) {
             // Scrolling down
             header.style.transform = 'translateY(-100%)';
