@@ -1,7 +1,7 @@
-# GitHub Pages configuration for DaDaSchool Wiki Guide
-title: DaDaSchool Wiki Guide
+# GitHub Pages configuration for DaDa School Wiki Guide
+title: DaDa School Wiki Guide
 description: Полное руководство по работе с Википедией для детей и начинающих пользователей
-author: DaDaSchool
+author: DaDa School
 email: info@dadaschool.ru
 
 # Site settings
@@ -49,14 +49,14 @@ plugins:
 # SEO
 seo:
   type: "WebSite"
-  name: "DaDaSchool Wiki Guide"
+  name: "DaDa School Wiki Guide"
   description: "Полное руководство по работе с Википедией для детей и начинающих пользователей"
   url: "https://hedgenious.github.io/wiki_guide"
   image: "/wiki_guide/assets/og-image.jpg"
 
 # Social media
 social:
-  name: DaDaSchool Wiki Guide
+  name: DaDa School Wiki Guide
   links:
     - https://github.com/hedgenious/wiki_guide
     - https://dadaschool.ru
