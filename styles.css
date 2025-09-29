@@ -1218,6 +1218,63 @@ html {
     margin: 0;
 }
 
+/* Wikipedia Logo Styles */
+.wikipedia-logo-container {
+    text-align: center;
+    margin: 2rem 0;
+    padding: 2rem;
+    background: linear-gradient(135deg, #F8F6ED 0%, #F0F4F8 100%);
+    border: 1px solid #BFE0F7;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(30, 78, 189, 0.1);
+}
+
+.wikipedia-logo {
+    max-width: 120px;
+    height: auto;
+    margin-bottom: 1rem;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
+    transition: transform 0.3s ease;
+}
+
+.wikipedia-logo:hover {
+    transform: scale(1.05);
+}
+
+.wikipedia-description {
+    color: #4A5568;
+    font-style: italic;
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+.footer-wikipedia-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 1rem;
+    padding: 0.5rem;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.footer-wikipedia-logo:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.footer-wikipedia-logo-img {
+    width: 24px;
+    height: 24px;
+    filter: brightness(0) invert(1);
+}
+
+.footer-wikipedia-logo span {
+    color: white;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
 /* Fun Facts Page Styles */
 .facts-grid {
     display: grid;
@@ -1469,5 +1526,43 @@ html {
     
     .header-content {
         gap: 0.8rem;
+    }
+}
+
+/* Wikipedia Logo Responsive Styles */
+@media (max-width: 768px) {
+    .wikipedia-logo-container {
+        padding: 1.5rem;
+        margin: 1.5rem 0;
+    }
+    
+    .wikipedia-logo {
+        max-width: 100px;
+    }
+    
+    .footer-wikipedia-logo {
+        flex-direction: column;
+        text-align: center;
+        gap: 0.3rem;
+    }
+    
+    .footer-wikipedia-logo-img {
+        width: 20px;
+        height: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .wikipedia-logo-container {
+        padding: 1rem;
+        margin: 1rem 0;
+    }
+    
+    .wikipedia-logo {
+        max-width: 80px;
+    }
+    
+    .wikipedia-description {
+        font-size: 0.8rem;
     }
 }
