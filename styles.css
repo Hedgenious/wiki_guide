@@ -1529,6 +1529,162 @@ html {
     }
 }
 
+/* Mangistau Page Styles */
+.mangistau-toc {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.toc-section {
+    background: linear-gradient(135deg, #F8F6ED 0%, #F0F4F8 100%);
+    border: 1px solid #BFE0F7;
+    border-radius: 12px;
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.toc-section:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(30, 78, 189, 0.15);
+}
+
+.toc-section h3 {
+    color: #1E4EBD;
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.toc-section ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.toc-section li {
+    margin: 0.5rem 0;
+}
+
+.toc-section a {
+    color: #4A5568;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    display: block;
+    padding: 0.3rem 0;
+}
+
+.toc-section a:hover {
+    color: #1E4EBD;
+    padding-left: 0.5rem;
+}
+
+.highlight-box {
+    background: linear-gradient(135deg, #F7E080 0%, #F9E9A8 100%);
+    border-left: 4px solid #1E4EBD;
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin: 2rem 0;
+}
+
+.highlight-box h4 {
+    color: #1E4EBD;
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+}
+
+.highlight-box p {
+    margin: 0;
+    color: #4A5568;
+    line-height: 1.6;
+}
+
+.species-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.species-item {
+    background: #F7F6ED;
+    border: 1px solid #BFE0F7;
+    border-radius: 12px;
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.species-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(30, 78, 189, 0.1);
+}
+
+.species-item h4 {
+    color: #1E4EBD;
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+}
+
+.species-item em {
+    color: #4A5568;
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
+.species-item p {
+    margin: 0.5rem 0;
+}
+
+.species-item a {
+    color: #1E4EBD;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.2s ease;
+}
+
+.species-item a:hover {
+    color: #2149B1;
+    gap: 0.7rem;
+}
+
+.intro-text {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #4A5568;
+    margin: 1.5rem 0;
+    padding: 1rem;
+    background: rgba(191, 224, 247, 0.1);
+    border-radius: 8px;
+}
+
+/* Responsive styles for Mangistau page */
+@media (max-width: 768px) {
+    .mangistau-toc {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .toc-section {
+        padding: 1rem;
+    }
+    
+    .species-list {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .species-item {
+        padding: 1rem;
+    }
+}
+
 /* Wikipedia Logo Responsive Styles */
 @media (max-width: 768px) {
     .wikipedia-logo-container {
