@@ -1,218 +1,1724 @@
-# Рекомендации и лучшие практики для работы с Википедией
+/* 
+ЦВЕТОВАЯ СХЕМА:
+================
 
-## Основные принципы
+ОСНОВНЫЕ ЦВЕТА (2):
+- Основной синий: #1E4EBD (rgb(30, 78, 189))
+- Светло-кремовый фон: #F8F6ED (rgb(248, 246, 237))
 
-### 1. Нейтральная точка зрения (НТЗ)
-- **Всегда** представляйте информацию объективно
-- Избегайте эмоциональных оценок
-- Представляйте разные точки зрения на спорные вопросы
-- Используйте нейтральную лексику
+ДОПОЛНИТЕЛЬНЫЕ ЦВЕТА (2):
+- Дополнительный синий: #2149B1 (rgb(33, 73, 177))
+- Светло-голубой акцент: #BFE0F7 (rgb(191, 224, 247))
 
-**Примеры:**
-```
-❌ Плохо: "Этот фильм ужасный"
-✅ Хорошо: "Фильм получил смешанные отзывы критиков"
+ДОПОЛНИТЕЛЬНЫЕ АКЦЕНТЫ:
+- Желтый акцент: #F7E080 (rgb(247, 224, 128))
+- Зеленовато-желтый: #EED16B (rgb(238, 209, 107))
+- Светло-зеленовато-желтый: #BFD760 (rgb(191, 215, 96))
+*/
 
-❌ Плохо: "Все знают, что..."
-✅ Хорошо: "Согласно исследованиям..."
-```
+/* Reset and base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-### 2. Проверяемость
-- Каждое утверждение должно иметь источник
-- Используйте только надёжные источники
-- Избегайте первичных исследований
-- Предпочитайте опубликованные источники
+body {
+    font-family: 'Coolvetica Regular', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    line-height: 1.6;
+    color: #1E4EBD;
+    background-color: #F8F6ED;
+    padding-top: 100px; /* Отступ для фиксированной шапки */
+}
 
-**Надёжные источники:**
-- Научные журналы и книги
-- Официальные сайты организаций
-- Респектабельные новостные издания
-- Академические публикации
+@media (max-width: 768px) {
+    body {
+        padding-top: 140px; /* Больший отступ для мобильных устройств */
+    }
+}
 
-**Ненадёжные источники:**
-- Личные блоги
-- Социальные сети
-- Википедия (циклические ссылки)
-- Неопубликованные материалы
+@media (max-width: 480px) {
+    body {
+        padding-top: 120px; /* Отступ для очень маленьких экранов */
+    }
+}
 
-## Работа с источниками
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
 
-### Правильное цитирование
-```
-<ref>Автор. Название книги. — Издательство, год. — С. 123.</ref>
-```
+/* Header */
+.header {
+    background: linear-gradient(135deg, #1E4EBD 0%, #2149B1 100%);
+    color: white;
+    padding: 1rem 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 20px rgba(30, 78, 189, 0.2);
+    transition: all 0.3s ease;
+    min-height: 80px;
+}
 
-### Создание списка литературы
-```markdown
-== Примечания ==
-<references />
+/* Эффект при скроллинге */
+.header.scrolled {
+    background: rgba(30, 78, 189, 0.95);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 30px rgba(30, 78, 189, 0.3);
+}
 
-== Литература ==
-* Автор. Название книги. — Издательство, год.
-* Автор. Название статьи // Журнал. — Год. — № 1. — С. 10-15.
-```
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
 
-### Внешние ссылки
-- Добавляйте в специальный раздел
-- Давайте описательные названия
-- Проверяйте работоспособность ссылок
-- Не добавляйте слишком много ссылок
+.logo {
+    font-size: 1.8rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    line-height: 1.2;
+    flex-shrink: 0;
+}
 
-## Структура статьи
+.logo i {
+    color: #F7E080;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
 
-### Хорошая структура:
-1. **Введение** - краткое описание темы
-2. **Основные разделы** - логически организованная информация
-3. **Заключение** - краткое резюме
-4. **Примечания** - источники
-5. **Литература** - дополнительная литература
-6. **Ссылки** - внешние ссылки
+.logo {
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
 
-### Заголовки разделов
-```markdown
-== Основной заголовок ==
-=== Подзаголовок ===
-==== Подподзаголовок ====
-```
+.logo-image {
+    height: 40px;
+    width: auto;
+    margin-right: 0.5rem;
+}
 
-## Стиль написания
+.nav {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
 
-### Язык и тон
-- Используйте простой, понятный язык
-- Избегайте жаргона без объяснений
-- Пишите в настоящем времени для общих фактов
-- Используйте активный залог
+.nav-link {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    font-size: 1rem;
+}
 
-### Форматирование
-- **Жирный текст** для важных терминов при первом упоминании
-- *Курсив* для названий книг, фильмов, песен
-- Кавычки для цитат
-- Списки для перечислений
+.nav-link:hover {
+    background-color: rgba(255,255,255,0.1);
+    transform: translateY(-2px);
+}
 
-## Безопасность и этика
+/* Hero section */
+.hero {
+    background: linear-gradient(135deg, #1E4EBD 0%, #2149B1 100%);
+    color: white;
+    padding: 4rem 0;
+    text-align: center;
+}
 
-### Защита личной информации
-- Не добавляйте личную информацию живых людей
-- Избегайте спекуляций о частной жизни
-- Соблюдайте принцип минимальной информации
+.hero-title {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+}
 
-### Авторские права
-- Никогда не копируйте тексты из других источников
-- Пишите своими словами
-- Указывайте источники информации
-- Не используйте защищённые изображения без разрешения
+.hero-subtitle {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
 
-### Правила сообщества
-- Будьте вежливы с другими участниками
-- Объясняйте свои правки
-- Участвуйте в обсуждениях конструктивно
-- Не вандализируйте статьи
+.hero-badges {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
 
-## Работа с изображениями
+.badge {
+    background: rgba(255,255,255,0.2);
+    padding: 0.5rem 1rem;
+    border-radius: 25px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    backdrop-filter: blur(10px);
+}
 
-### Загрузка изображений
-1. Убедитесь, что у вас есть права на изображение
-2. Используйте свободные лицензии (CC BY-SA, Public Domain)
-3. Добавляйте описания и категории
-4. Указывайте источник изображения
+/* Sections */
+.section {
+    padding: 4rem 0;
+}
 
-### Форматирование изображений
-```markdown
-[[Файл:Название.jpg|thumb|300px|Описание изображения]]
-```
+.section-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 3rem;
+    color: #1E4EBD;
+}
 
-## Решение конфликтов
+/* Materials grid */
+.materials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
 
-### Если ваши правки отменены:
-1. Не расстраивайтесь
-2. Изучите причины отмены
-3. Обсудите изменения на странице обсуждения
-4. Приведите дополнительные источники
-5. Будьте готовы к компромиссам
+.material-card {
+    background: white;
+    border-radius: 16px;
+    padding: 2rem;
+    box-shadow: 0 4px 20px rgba(30, 78, 189, 0.1);
+    transition: all 0.3s ease;
+    border: 1px solid #BFE0F7;
+}
 
-### Работа с другими участниками:
-- Используйте страницы обсуждения
-- Будьте конструктивны
-- Избегайте личных нападок
-- Фокусируйтесь на содержании, а не на личностях
+.material-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 40px rgba(30, 78, 189, 0.2);
+}
 
-## Полезные инструменты
+.material-icon {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, #1E4EBD 0%, #2149B1 100%);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    color: white;
+    font-size: 1.5rem;
+}
 
-### Редактор
-- Используйте визуальный редактор для простых правок
-- Переключайтесь на исходный код для сложного форматирования
-- Сохраняйте черновики для больших изменений
+.material-card h3 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: #1E4EBD;
+}
 
-### Песочница
-- Экспериментируйте с форматированием
-- Тренируйтесь перед реальными правками
-- Тестируйте сложные конструкции
+.material-card p {
+    color: #4A5568;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
 
-### Список наблюдения
-- Отслеживайте интересные статьи
-- Получайте уведомления об изменениях
-- Изучайте работу других участников
+.material-link {
+    color: #1E4EBD;
+    text-decoration: none;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+}
 
-## Частые ошибки новичков
+.material-link:hover {
+    color: #2149B1;
+    transform: translateX(4px);
+}
 
-### 1. Копирование текста
-❌ **Неправильно**: Копировать абзацы из других источников
-✅ **Правильно**: Переписывать информацию своими словами
+.material-link::after {
+    content: '→';
+    transition: transform 0.3s ease;
+}
 
-### 2. Отсутствие источников
-❌ **Неправильно**: Добавлять информацию без ссылок
-✅ **Правильно**: Каждое утверждение должно иметь источник
+.material-link:hover::after {
+    transform: translateX(4px);
+}
 
-### 3. Личные мнения
-❌ **Неправильно**: "Я думаю, что..."
-✅ **Правильно**: "Согласно исследованиям..."
+/* Guides grid */
+.guides-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
 
-### 4. Неточные описания правок
-❌ **Неправильно**: "Правка"
-✅ **Правильно**: "Исправлена дата основания города"
+.guide-card {
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 4px 20px rgba(30, 78, 189, 0.1);
+    border: 1px solid #BFE0F7;
+}
 
-### 5. Игнорирование обсуждений
-❌ **Неправильно**: Игнорировать замечания других участников
-✅ **Правильно**: Участвовать в конструктивном диалоге
+.guide-card h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: #1E4EBD;
+}
 
-## Советы для эффективной работы
+.guide-card ul {
+    list-style: none;
+}
 
-### Планирование правок
-1. Прочитайте статью полностью
-2. Определите, что можно улучшить
-3. Найдите надёжные источники
-4. Спланируйте структуру изменений
-5. Начните с малых правок
+.guide-card li {
+    margin-bottom: 0.5rem;
+}
 
-### Постепенное улучшение
-- Не пытайтесь переписать всю статью сразу
-- Делайте небольшие, но качественные правки
-- Накапливайте опыт постепенно
-- Учитесь на примерах хороших статей
+.guide-card a {
+    color: #1E4EBD;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
 
-### Изучение правил
-- Регулярно читайте руководства Википедии
-- Изучайте примеры хороших статей
-- Участвуйте в обсуждениях
-- Задавайте вопросы опытным участникам
+.guide-card a:hover {
+    color: #2149B1;
+}
 
-## Полезные ресурсы
 
-### Официальные руководства
-- [Википедия:Помощь](https://ru.wikipedia.org/wiki/Википедия:Помощь)
-- [Википедия:Правила](https://ru.wikipedia.org/wiki/Википедия:Правила)
-- [Википедия:Стиль](https://ru.wikipedia.org/wiki/Википедия:Стиль)
+/* About section */
+.about-content {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 3rem;
+    align-items: start;
+}
 
-### Инструменты
-- [Википедия:Песочница](https://ru.wikipedia.org/wiki/Википедия:Песочница)
-- [Википедия:Список наблюдения](https://ru.wikipedia.org/wiki/Служебная:Watchlist)
-- [Википедия:Статистика](https://ru.wikipedia.org/wiki/Служебная:Статистика)
+.about-text h3 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: #2d3748;
+}
 
-### Сообщество
-- [Википедия:Кафе](https://ru.wikipedia.org/wiki/Википедия:Кафе)
-- [Википедия:Вопросы](https://ru.wikipedia.org/wiki/Википедия:Вопросы)
-- [Википедия:Новичкам](https://ru.wikipedia.org/wiki/Википедия:Новичкам)
+.about-text ul {
+    margin-bottom: 2rem;
+    padding-left: 1.5rem;
+}
 
----
+.about-text li {
+    margin-bottom: 0.5rem;
+    color: #4a5568;
+}
 
-**Помните**: Цель Википедии — создать свободную энциклопедию для всех. Ваш вклад должен быть качественным, проверяемым и полезным для читателей.
+.about-text p {
+    color: #4a5568;
+    margin-bottom: 1.5rem;
+}
+
+.about-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.stat {
+    text-align: center;
+    padding: 1.5rem;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    border: 1px solid #e2e8f0;
+}
+
+.stat-number {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #667eea;
+    margin-bottom: 0.5rem;
+}
+
+.stat-label {
+    color: #718096;
+    font-weight: 500;
+}
+
+/* Footer */
+.footer {
+    background: #2d3748;
+    color: white;
+    padding: 3rem 0 1rem;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.footer-section h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: #ffd700;
+}
+
+.footer-section p {
+    color: #a0aec0;
+    line-height: 1.6;
+}
+
+.footer-section ul {
+    list-style: none;
+}
+
+.footer-section li {
+    margin-bottom: 0.5rem;
+}
+
+.footer-section a {
+    color: #a0aec0;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-section a:hover {
+    color: #ffd700;
+}
+
+.footer-bottom {
+    border-top: 1px solid #4a5568;
+    padding-top: 1rem;
+    text-align: center;
+    color: #a0aec0;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .header-content {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .nav {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .logo-image {
+        height: 30px;
+    }
+    
+    .hero-title {
+        font-size: 2rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1rem;
+    }
+    
+    .hero-badges {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .section-title {
+        font-size: 2rem;
+    }
+    
+    .materials-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .about-content {
+        grid-template-columns: 1fr;
+    }
+    
+    .about-stats {
+        flex-direction: row;
+        justify-content: space-around;
+    }
+    
+    .footer-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 0 15px;
+    }
+    
+    .logo-image {
+        height: 25px;
+    }
+    
+    .hero {
+        padding: 2rem 0;
+    }
+    
+    .section {
+        padding: 2rem 0;
+    }
+    
+    .material-card,
+    .guide-card,
+    .community-card {
+        padding: 1.5rem;
+    }
+    
+    .about-stats {
+        flex-direction: column;
+    }
+}
+
+/* Smooth scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, #5a67d8 0%, #6b46c1 100%);
+}
+
+/* Animation for cards */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.material-card,
+.guide-card {
+    animation: fadeInUp 0.6s ease-out;
+}
+
+/* Hover effects */
+.material-card:hover .material-icon {
+    transform: scale(1.1);
+    transition: transform 0.3s ease;
+}
+
+
+/* Page-specific styles */
+.page-hero {
+    background: linear-gradient(135deg, #1E4EBD 0%, #2149B1 100%);
+    color: white;
+    padding: 3rem 0;
+}
+
+.breadcrumb {
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+.breadcrumb a {
+    color: white;
+    text-decoration: none;
+}
+
+.breadcrumb a:hover {
+    text-decoration: underline;
+}
+
+.page-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.page-subtitle {
+    font-size: 1.2rem;
+    opacity: 0.9;
+    max-width: 600px;
+}
+
+.content-section {
+    padding: 3rem 0;
+}
+
+.content-wrapper {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 3rem;
+    align-items: start;
+}
+
+.content-main {
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 4px 20px rgba(30, 78, 189, 0.1);
+    border: 1px solid #BFE0F7;
+}
+
+.markdown-content h2 {
+    color: #1E4EBD;
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: 2rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #BFE0F7;
+}
+
+.markdown-content h3 {
+    color: #1E4EBD;
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin: 1.5rem 0 0.5rem;
+}
+
+.markdown-content h4 {
+    color: #4A5568;
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 1rem 0 0.5rem;
+}
+
+.markdown-content ul, .markdown-content ol {
+    margin: 1rem 0;
+    padding-left: 1.5rem;
+}
+
+.markdown-content li {
+    margin-bottom: 0.5rem;
+    line-height: 1.6;
+}
+
+.content-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.sidebar-card {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 20px rgba(30, 78, 189, 0.1);
+    border: 1px solid #BFE0F7;
+}
+
+.sidebar-card h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: #1E4EBD;
+}
+
+.sidebar-card ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar-card li {
+    margin-bottom: 0.5rem;
+}
+
+.sidebar-card a {
+    color: #1E4EBD;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.sidebar-card a:hover {
+    color: #2149B1;
+}
+
+/* Info and warning boxes */
+.info-box, .warning-box {
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    margin: 1.5rem 0;
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+}
+
+.info-box {
+    background: #e6fffa;
+    border-left: 4px solid #38b2ac;
+    color: #234e52;
+}
+
+.warning-box {
+    background: #fef5e7;
+    border-left: 4px solid #ed8936;
+    color: #744210;
+}
+
+.info-box i, .warning-box i {
+    font-size: 1.2rem;
+    margin-top: 0.2rem;
+}
+
+/* Code examples */
+.code-example {
+    background: #f7fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 1rem;
+    margin: 1rem 0;
+}
+
+.code-example h4 {
+    margin-top: 0;
+    color: #2d3748;
+}
+
+.code-example code {
+    background: #edf2f7;
+    padding: 0.2rem 0.4rem;
+    border-radius: 4px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.9rem;
+}
+
+/* Template examples */
+.template-examples {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+    margin: 1.5rem 0;
+}
+
+.template-card {
+    background: #f7fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 1rem;
+}
+
+.template-card h4 {
+    color: #2d3748;
+    margin-bottom: 0.5rem;
+}
+
+.template-card p {
+    margin: 0.5rem 0;
+    font-family: 'Courier New', monospace;
+    font-size: 0.9rem;
+}
+
+.template-card small {
+    color: #718096;
+    font-style: italic;
+}
+
+/* Nickname examples */
+.good-examples, .bad-examples {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin: 1rem 0;
+}
+
+.nickname-good {
+    background: #c6f6d5;
+    color: #22543d;
+    padding: 0.3rem 0.6rem;
+    border-radius: 4px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.9rem;
+}
+
+.nickname-bad {
+    background: #fed7d7;
+    color: #742a2a;
+    padding: 0.3rem 0.6rem;
+    border-radius: 4px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.9rem;
+}
+
+/* Checklist */
+.checklist {
+    background: #f7fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+}
+
+.checklist label {
+    display: block;
+    margin-bottom: 0.5rem;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.checklist input[type="checkbox"] {
+    margin-right: 0.5rem;
+}
+
+/* Principles grid */
+.principles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin: 1.5rem 0;
+}
+
+.principle-card {
+    background: #f7fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 1rem;
+    text-align: center;
+}
+
+.principle-card h4 {
+    color: #2d3748;
+    margin-bottom: 0.5rem;
+}
+
+/* Do/Don't grid */
+.do-dont-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin: 1.5rem 0;
+}
+
+.do-card, .dont-card {
+    border-radius: 8px;
+    padding: 1.5rem;
+}
+
+.do-card {
+    background: #f0fff4;
+    border: 1px solid #9ae6b4;
+}
+
+.dont-card {
+    background: #fff5f5;
+    border: 1px solid #feb2b2;
+}
+
+.do-card h4, .dont-card h4 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+
+/* Sources grid */
+.sources-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin: 1.5rem 0;
+}
+
+.source-card {
+    border-radius: 8px;
+    padding: 1.5rem;
+}
+
+.source-card.good {
+    background: #f0fff4;
+    border: 1px solid #9ae6b4;
+}
+
+.source-card.bad {
+    background: #fff5f5;
+    border: 1px solid #feb2b2;
+}
+
+.source-card h4 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+
+/* Navigation active state */
+.nav-link.active {
+    background-color: rgba(255,255,255,0.2);
+    font-weight: 600;
+}
+
+/* FAQ styles */
+.faq-item {
+    background: #f7fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.faq-item:hover {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    transform: translateY(-2px);
+}
+
+.faq-item h3 {
+    color: #2d3748;
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.faq-item h3::before {
+    content: "❓";
+    font-size: 1rem;
+}
+
+.faq-item p {
+    color: #4a5568;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* Additional styles for new pages */
+.image-types {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+    margin: 1.5rem 0;
+}
+
+.image-type-card {
+    background: #F7F6ED;
+    border: 1px solid #BFE0F7;
+    border-radius: 8px;
+    padding: 1rem;
+}
+
+.image-type-card h4 {
+    color: #1E4EBD;
+    margin-bottom: 0.5rem;
+}
+
+.license-good, .license-bad {
+    border-radius: 8px;
+    padding: 1rem;
+    margin: 1rem 0;
+}
+
+.license-good {
+    background: #E6FFFA;
+    border-left: 4px solid #38B2AC;
+}
+
+.license-bad {
+    background: #FEF5E7;
+    border-left: 4px solid #ED8936;
+}
+
+.source-types {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin: 1.5rem 0;
+}
+
+.source-type-card {
+    border-radius: 8px;
+    padding: 1.5rem;
+}
+
+.source-type-card.primary {
+    background: #E6FFFA;
+    border: 1px solid #9AE6B4;
+}
+
+.source-type-card.secondary {
+    background: #F0F9FF;
+    border: 1px solid #93C5FD;
+}
+
+.source-type-card h4 {
+    color: #1E4EBD;
+    margin-bottom: 1rem;
+}
+
+.citation-example {
+    background: #F7F6ED;
+    border: 1px solid #BFE0F7;
+    border-radius: 8px;
+    padding: 1rem;
+    margin: 1rem 0;
+}
+
+.citation-example h4 {
+    color: #1E4EBD;
+    margin-bottom: 0.5rem;
+}
+
+.citation-example code {
+    background: #E6F3FF;
+    padding: 0.2rem 0.4rem;
+    border-radius: 4px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.9rem;
+    color: #1E4EBD;
+}
+
+.bibliography-example {
+    background: #F7F6ED;
+    border: 1px solid #BFE0F7;
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+}
+
+.bibliography-example h4 {
+    color: #1E4EBD;
+    margin-bottom: 1rem;
+}
+
+.language-rules {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin: 1.5rem 0;
+}
+
+.rule-card {
+    border-radius: 8px;
+    padding: 1.5rem;
+}
+
+.rule-card.good {
+    background: #F0FFF4;
+    border: 1px solid #9AE6B4;
+}
+
+.rule-card.bad {
+    background: #FFF5F5;
+    border: 1px solid #FEB2B2;
+}
+
+.rule-card h4 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+
+.example-good, .example-bad {
+    margin: 1.5rem 0;
+}
+
+.example-good blockquote {
+    background: #F0FFF4;
+    border-left: 4px solid #9AE6B4;
+    padding: 1rem;
+    margin: 0;
+    border-radius: 0 8px 8px 0;
+}
+
+.example-bad blockquote {
+    background: #FFF5F5;
+    border-left: 4px solid #FEB2B2;
+    padding: 1rem;
+    margin: 0;
+    border-radius: 0 8px 8px 0;
+}
+
+.npov-examples {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin: 1.5rem 0;
+}
+
+.npov-card {
+    border-radius: 8px;
+    padding: 1rem;
+}
+
+.npov-card h4 {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+}
+
+.grammar-errors {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin: 1rem 0;
+}
+
+.error-example {
+    border-radius: 8px;
+    padding: 1rem;
+    text-align: center;
+}
+
+.error-example h4 {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+}
+
+.linking-words {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin: 1.5rem 0;
+}
+
+.word-category {
+    background: #F7F6ED;
+    border: 1px solid #BFE0F7;
+    border-radius: 8px;
+    padding: 1rem;
+    text-align: center;
+}
+
+.word-category h4 {
+    color: #1E4EBD;
+    margin-bottom: 0.5rem;
+}
+
+.rating-system {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+    margin: 1.5rem 0;
+}
+
+.rating-card {
+    border-radius: 8px;
+    padding: 1.5rem;
+}
+
+.rating-card.excellent {
+    background: #F0FFF4;
+    border: 1px solid #9AE6B4;
+}
+
+.rating-card.good {
+    background: #E6F3FF;
+    border: 1px solid #93C5FD;
+}
+
+.rating-card.poor {
+    background: #FFF5F5;
+    border: 1px solid #FEB2B2;
+}
+
+.rating-card h4 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+
+.bad-sources {
+    margin: 1.5rem 0;
+}
+
+.bad-source-card {
+    background: #FFF5F5;
+    border: 1px solid #FEB2B2;
+    border-radius: 8px;
+    padding: 1.5rem;
+}
+
+.bad-source-card h4 {
+    color: #E53E3E;
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+
+/* Screenshot styles */
+.screenshot-container {
+    margin: 2rem 0;
+    text-align: center;
+    background: #F7F6ED;
+    border: 1px solid #BFE0F7;
+    border-radius: 12px;
+    padding: 1.5rem;
+}
+
+.screenshot {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(30, 78, 189, 0.15);
+    border: 1px solid #BFE0F7;
+    transition: transform 0.3s ease;
+}
+
+.screenshot:hover {
+    transform: scale(1.02);
+}
+
+.screenshot-caption {
+    margin-top: 1rem;
+    font-style: italic;
+    color: #4A5568;
+    font-size: 0.9rem;
+}
+
+.screenshot-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.screenshot-item {
+    background: #F7F6ED;
+    border: 1px solid #BFE0F7;
+    border-radius: 12px;
+    padding: 1.5rem;
+    text-align: center;
+}
+
+.screenshot-item img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(30, 78, 189, 0.1);
+}
+
+.screenshot-item h4 {
+    color: #1E4EBD;
+    margin: 1rem 0 0.5rem;
+    font-size: 1.1rem;
+}
+
+.screenshot-item p {
+    color: #4A5568;
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+/* Wikipedia Logo Styles */
+.wikipedia-logo-container {
+    text-align: center;
+    margin: 2rem 0;
+    padding: 2rem;
+    background: linear-gradient(135deg, #F8F6ED 0%, #F0F4F8 100%);
+    border: 1px solid #BFE0F7;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(30, 78, 189, 0.1);
+}
+
+.wikipedia-logo {
+    max-width: 120px;
+    height: auto;
+    margin-bottom: 1rem;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
+    transition: transform 0.3s ease;
+}
+
+.wikipedia-logo:hover {
+    transform: scale(1.05);
+}
+
+.wikipedia-description {
+    color: #4A5568;
+    font-style: italic;
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+.footer-wikipedia-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 1rem;
+    padding: 0.5rem;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.footer-wikipedia-logo:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.footer-wikipedia-logo-img {
+    width: 24px;
+    height: 24px;
+    filter: brightness(0) invert(1);
+}
+
+.footer-wikipedia-logo span {
+    color: white;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+/* Fun Facts Page Styles */
+.facts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+    margin: 3rem 0;
+}
+
+.fact-card {
+    background: linear-gradient(135deg, #F8F6ED 0%, #F0F4F8 100%);
+    border: 1px solid #BFE0F7;
+    border-radius: 16px;
+    padding: 2rem;
+    position: relative;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 20px rgba(30, 78, 189, 0.1);
+}
+
+.fact-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(30, 78, 189, 0.2);
+}
+
+.fact-number {
+    position: absolute;
+    top: -15px;
+    left: 20px;
+    background: linear-gradient(135deg, #1E4EBD 0%, #2149B1 100%);
+    color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 1.2rem;
+    box-shadow: 0 4px 15px rgba(30, 78, 189, 0.3);
+}
+
+.fact-card h3 {
+    color: #1E4EBD;
+    margin: 1rem 0 1rem 0;
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+
+.fact-card p {
+    color: #4A5568;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+
+.fact-icon {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    color: #BFE0F7;
+    font-size: 2rem;
+    opacity: 0.7;
+}
+
+.cta-buttons {
+    display: flex;
+    gap: 1rem;
+    margin: 2rem 0;
+    flex-wrap: wrap;
+}
+
+.cta-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem 2rem;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.cta-button.primary {
+    background: linear-gradient(135deg, #1E4EBD 0%, #2149B1 100%);
+    color: white;
+    box-shadow: 0 4px 15px rgba(30, 78, 189, 0.3);
+}
+
+.cta-button.primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(30, 78, 189, 0.4);
+}
+
+.cta-button.secondary {
+    background: transparent;
+    color: #1E4EBD;
+    border-color: #1E4EBD;
+}
+
+.cta-button.secondary:hover {
+    background: #1E4EBD;
+    color: white;
+    transform: translateY(-2px);
+}
+
+/* Responsive design for content pages */
+@media (max-width: 768px) {
+    .content-wrapper {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .page-title {
+        font-size: 2rem;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+    
+    .do-dont-grid,
+    .sources-grid,
+    .source-types,
+    .language-rules,
+    .npov-examples,
+    .grammar-errors {
+        grid-template-columns: 1fr;
+    }
+    
+    .principles-grid,
+    .image-types,
+    .rating-system {
+        grid-template-columns: 1fr;
+    }
+    
+    .template-examples {
+        grid-template-columns: 1fr;
+    }
+    
+    .screenshot-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .screenshot-container {
+        padding: 1rem;
+    }
+    
+    .screenshot {
+        max-width: 100%;
+    }
+    
+    .facts-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .fact-card {
+        padding: 1.5rem;
+    }
+    
+    .cta-buttons {
+        flex-direction: column;
+    }
+    
+    .cta-button {
+        text-align: center;
+        justify-content: center;
+    }
+    
+    /* Mobile header fixes */
+    .header {
+        padding: 0.8rem 0;
+        min-height: auto;
+    }
+    
+    .header-content {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+    
+    .logo {
+        font-size: 1.6rem;
+        margin-bottom: 0.5rem;
+        line-height: 1.2;
+    }
+    
+    .logo-image {
+        width: 35px;
+        height: 35px;
+        margin-right: 0.8rem;
+    }
+    
+    .nav {
+        gap: 0.8rem;
+        width: 100%;
+        justify-content: flex-start;
+        overflow-x: auto;
+        padding: 0.5rem 0;
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    .nav-link {
+        white-space: nowrap;
+        font-size: 1rem;
+        padding: 0.6rem 1rem;
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.15);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        min-width: fit-content;
+    }
+    
+    .nav-link:hover,
+    .nav-link.active {
+        background: rgba(255, 255, 255, 0.25);
+        border-color: rgba(255, 255, 255, 0.4);
+    }
+}
+
+/* Extra small screens */
+@media (max-width: 480px) {
+    .header {
+        padding: 0.6rem 0;
+    }
+    
+    .logo {
+        font-size: 1.4rem;
+        line-height: 1.1;
+    }
+    
+    .logo-image {
+        width: 32px;
+        height: 32px;
+        margin-right: 0.6rem;
+    }
+    
+    .nav {
+        gap: 0.6rem;
+        padding: 0.3rem 0;
+    }
+    
+    .nav-link {
+        font-size: 0.9rem;
+        padding: 0.5rem 0.8rem;
+        min-width: auto;
+    }
+    
+    .container {
+        padding: 0 15px;
+    }
+    
+    .header-content {
+        gap: 0.8rem;
+    }
+}
+
+/* Mangistau Page Styles */
+.mangistau-toc {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.toc-section {
+    background: linear-gradient(135deg, #F8F6ED 0%, #F0F4F8 100%);
+    border: 1px solid #BFE0F7;
+    border-radius: 12px;
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.toc-section:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(30, 78, 189, 0.15);
+}
+
+.toc-section h3 {
+    color: #1E4EBD;
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.toc-section ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.toc-section li {
+    margin: 0.5rem 0;
+}
+
+.toc-section a {
+    color: #4A5568;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    display: block;
+    padding: 0.3rem 0;
+}
+
+.toc-section a:hover {
+    color: #1E4EBD;
+    padding-left: 0.5rem;
+}
+
+.highlight-box {
+    background: linear-gradient(135deg, #F7E080 0%, #F9E9A8 100%);
+    border-left: 4px solid #1E4EBD;
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin: 2rem 0;
+}
+
+.highlight-box h4 {
+    color: #1E4EBD;
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+}
+
+.highlight-box p {
+    margin: 0;
+    color: #4A5568;
+    line-height: 1.6;
+}
+
+.species-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.species-item {
+    background: #F7F6ED;
+    border: 1px solid #BFE0F7;
+    border-radius: 12px;
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.species-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(30, 78, 189, 0.1);
+}
+
+.species-item h4 {
+    color: #1E4EBD;
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+}
+
+.species-item em {
+    color: #4A5568;
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
+.species-item p {
+    margin: 0.5rem 0;
+}
+
+.species-item a {
+    color: #1E4EBD;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.2s ease;
+}
+
+.species-item a:hover {
+    color: #2149B1;
+    gap: 0.7rem;
+}
+
+.intro-text {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #4A5568;
+    margin: 1.5rem 0;
+    padding: 1rem;
+    background: rgba(191, 224, 247, 0.1);
+    border-radius: 8px;
+}
+
+/* Responsive styles for Mangistau page */
+@media (max-width: 768px) {
+    .mangistau-toc {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .toc-section {
+        padding: 1rem;
+    }
+    
+    .species-list {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .species-item {
+        padding: 1rem;
+    }
+}
+
+/* Wikipedia Logo Responsive Styles */
+@media (max-width: 768px) {
+    .wikipedia-logo-container {
+        padding: 1.5rem;
+        margin: 1.5rem 0;
+    }
+    
+    .wikipedia-logo {
+        max-width: 100px;
+    }
+    
+    .footer-wikipedia-logo {
+        flex-direction: column;
+        text-align: center;
+        gap: 0.3rem;
+    }
+    
+    .footer-wikipedia-logo-img {
+        width: 20px;
+        height: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .wikipedia-logo-container {
+        padding: 1rem;
+        margin: 1rem 0;
+    }
+    
+    .wikipedia-logo {
+        max-width: 80px;
+    }
+    
+    .wikipedia-description {
+        font-size: 0.8rem;
+    }
+}
