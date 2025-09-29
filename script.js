@@ -36,14 +36,8 @@ document.addEventListener('DOMContentLoaded', function() {
             header.classList.remove('scrolled');
         }
         
-        // Скрываем/показываем шапку при скроллинге
-        if (scrollTop > lastScrollTop && scrollTop > 100) {
-            // Scrolling down
-            header.style.transform = 'translateY(-100%)';
-        } else {
-            // Scrolling up
-            header.style.transform = 'translateY(0)';
-        }
+        // Шапка всегда остается видимой - убираем скрытие при скроллинге вниз
+        header.style.transform = 'translateY(0)';
         
         lastScrollTop = scrollTop;
     });

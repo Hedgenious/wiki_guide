@@ -1193,6 +1193,110 @@ html {
     margin: 0;
 }
 
+/* Fun Facts Page Styles */
+.facts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+    margin: 3rem 0;
+}
+
+.fact-card {
+    background: linear-gradient(135deg, #F8F6ED 0%, #F0F4F8 100%);
+    border: 1px solid #BFE0F7;
+    border-radius: 16px;
+    padding: 2rem;
+    position: relative;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 20px rgba(30, 78, 189, 0.1);
+}
+
+.fact-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(30, 78, 189, 0.2);
+}
+
+.fact-number {
+    position: absolute;
+    top: -15px;
+    left: 20px;
+    background: linear-gradient(135deg, #1E4EBD 0%, #2149B1 100%);
+    color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 1.2rem;
+    box-shadow: 0 4px 15px rgba(30, 78, 189, 0.3);
+}
+
+.fact-card h3 {
+    color: #1E4EBD;
+    margin: 1rem 0 1rem 0;
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+
+.fact-card p {
+    color: #4A5568;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+
+.fact-icon {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    color: #BFE0F7;
+    font-size: 2rem;
+    opacity: 0.7;
+}
+
+.cta-buttons {
+    display: flex;
+    gap: 1rem;
+    margin: 2rem 0;
+    flex-wrap: wrap;
+}
+
+.cta-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem 2rem;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.cta-button.primary {
+    background: linear-gradient(135deg, #1E4EBD 0%, #2149B1 100%);
+    color: white;
+    box-shadow: 0 4px 15px rgba(30, 78, 189, 0.3);
+}
+
+.cta-button.primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(30, 78, 189, 0.4);
+}
+
+.cta-button.secondary {
+    background: transparent;
+    color: #1E4EBD;
+    border-color: #1E4EBD;
+}
+
+.cta-button.secondary:hover {
+    background: #1E4EBD;
+    color: white;
+    transform: translateY(-2px);
+}
+
 /* Responsive design for content pages */
 @media (max-width: 768px) {
     .content-wrapper {
@@ -1236,5 +1340,23 @@ html {
     
     .screenshot {
         max-width: 100%;
+    }
+    
+    .facts-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .fact-card {
+        padding: 1.5rem;
+    }
+    
+    .cta-buttons {
+        flex-direction: column;
+    }
+    
+    .cta-button {
+        text-align: center;
+        justify-content: center;
     }
 }
