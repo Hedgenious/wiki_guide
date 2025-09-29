@@ -1,0 +1,29 @@
+# Временные файлы
+*.tmp
+*.temp
+*~
+
+# Логи
+*.log
+
+# Системные файлы
+.DS_Store
+Thumbs.db
+
+# IDE файлы
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Скриншоты: игнорируй исходники редакторов и тяжёлые сырцы, но не готовые PNG/JPG
+screenshots/*.psd
+screenshots/*.xcf
+screenshots/*.ai
+screenshots/*.sketch
+screenshots/*.fig
+screenshots/*-orig.*
+
+# Временные документы
+*.bak
+*.backup

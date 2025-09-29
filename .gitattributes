@@ -1,0 +1,33 @@
+# Нормализуем перевод строк
+* text=auto eol=lf
+
+# Markdown и текстовые
+*.md text
+*.txt text
+
+# Скрипты/конфиги
+*.sh text eol=lf
+*.ps1 text eol=crlf
+*.json text
+*.yml text
+*.yaml text
+*.gitignore text
+*.gitattributes text
+
+# Изображения/медиа — бинарные
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.webp binary
+*.svg text  # svg — текстовый формат (можно diff)
+
+# Исходники редакторов изображений — бинарные
+*.psd binary
+*.ai binary
+*.sketch binary
+*.fig binary
+*.xcf binary
+
+# Windows специфично
+*.bat text eol=crlf
