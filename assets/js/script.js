@@ -40,12 +40,14 @@ cards.forEach(card => {
 
 // Add scroll effect to header
 const header = document.querySelector('.header');
+const mangistauNav = document.querySelector('.mangistau-nav');
 let lastScrollTop = 0;
+let ticking = false;
 
-window.addEventListener('scroll', function() {
+function updateNavigation() {
     const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
     
-    // Добавляем класс при скроллинге
+    // Добавляем класс при скроллинге для шапки
     if (scrollTop > 50) {
         header.classList.add('scrolled');
     } else {
@@ -55,7 +57,26 @@ window.addEventListener('scroll', function() {
     // Шапка всегда остается видимой
     header.style.transform = 'translateY(0)';
     
+    // Управление навигацией Мангистау
+    if (mangistauNav) {
+        if (scrollTop > lastScrollTop && scrollTop > 100) {
+            // Скроллим вниз - скрываем навигацию
+            mangistauNav.classList.add('hidden');
+        } else {
+            // Скроллим вверх - показываем навигацию
+            mangistauNav.classList.remove('hidden');
+        }
+    }
+    
     lastScrollTop = scrollTop;
+    ticking = false;
+}
+
+window.addEventListener('scroll', function() {
+    if (!ticking) {
+        requestAnimationFrame(updateNavigation);
+        ticking = true;
+    }
 });
 
 // Active navigation link
@@ -66,6 +87,27 @@ navLinks.forEach(link => {
     const linkPath = link.getAttribute('href').split('/').pop();
     if (linkPath === currentLocation) {
         link.classList.add('active');
+    }
+});
+
+// Dynamic navigation for Mangistau
+document.addEventListener('DOMContentLoaded', function() {
+    // Collapsible navigation sections
+    const collapsibleSections = document.querySelectorAll('.nav-section.collapsible');
+    
+    collapsibleSections.forEach(section => {
+        const header = section.querySelector('h4');
+        if (header) {
+            header.addEventListener('click', function() {
+                section.classList.toggle('collapsed');
+            });
+        }
+    });
+    
+    // Auto-expand section with active item
+    const activeSection = document.querySelector('.nav-section:not(.collapsible)');
+    if (activeSection) {
+        activeSection.classList.remove('collapsed');
     }
 });
 

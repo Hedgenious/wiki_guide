@@ -28,7 +28,7 @@ body {
     line-height: 1.6;
     color: #1E4EBD;
     background-color: #F8F6ED;
-    padding-top: 50px; /* Минимальный отступ для фиксированной шапки */
+    padding-top: 45px; /* Минимальный отступ для фиксированной шапки */
 }
 
 @media (max-width: 768px) {
@@ -53,7 +53,7 @@ body {
 .header {
     background: linear-gradient(135deg, #1E4EBD 0%, #2149B1 100%);
     color: white;
-    padding: 0.5rem 0;
+    padding: 0.4rem 0;
     position: fixed;
     top: 0;
     left: 0;
@@ -61,7 +61,7 @@ body {
     z-index: 1000;
     box-shadow: 0 2px 20px rgba(30, 78, 189, 0.2);
     transition: all 0.3s ease;
-    min-height: 60px;
+    min-height: 50px;
 }
 
 /* Эффект при скроллинге */
@@ -80,11 +80,11 @@ body {
 }
 
 .logo {
-    font-size: 1.3rem;
+    font-size: 1.1rem;
     font-weight: 700;
     display: flex;
     align-items: center;
-    gap: 0.4rem;
+    gap: 0.3rem;
     line-height: 1.1;
     flex-shrink: 0;
 }
@@ -99,14 +99,14 @@ body {
 }
 
 .logo-image {
-    height: 32px;
+    height: 28px;
     width: auto;
-    margin-right: 0.3rem;
+    margin-right: 0.2rem;
 }
 
 .nav {
     display: flex;
-    gap: 0.8rem;
+    gap: 0.6rem;
     flex-wrap: wrap;
     align-items: center;
 }
@@ -116,10 +116,10 @@ body {
     text-decoration: none;
     font-weight: 500;
     transition: all 0.3s ease;
-    padding: 0.4rem 0.8rem;
-    border-radius: 6px;
+    padding: 0.3rem 0.6rem;
+    border-radius: 4px;
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     white-space: nowrap;
 }
 
@@ -137,21 +137,21 @@ body {
 .hero {
     background: linear-gradient(135deg, #1E4EBD 0%, #2149B1 100%);
     color: white;
-    padding: 4rem 0;
+    padding: 2.5rem 0;
     text-align: center;
-    margin-top: 2rem; /* Дополнительный отступ от шапки */
+    margin-top: 0;
 }
 
 .hero-title {
-    font-size: 3rem;
+    font-size: 2.5rem;
     font-weight: 700;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
     line-height: 1.2;
 }
 
 .hero-subtitle {
-    font-size: 1.2rem;
-    margin-bottom: 2rem;
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
     opacity: 0.9;
     max-width: 800px;
     margin-left: auto;
@@ -178,14 +178,14 @@ body {
 
 /* Sections */
 .section {
-    padding: 4rem 0;
+    padding: 2rem 0;
 }
 
 .section-title {
-    font-size: 2.5rem;
+    font-size: 2.2rem;
     font-weight: 700;
     text-align: center;
-    margin-bottom: 3rem;
+    margin-bottom: 1.5rem;
     color: #1E4EBD;
 }
 
@@ -555,13 +555,13 @@ html {
 .page-hero {
     background: linear-gradient(135deg, #1E4EBD 0%, #2149B1 100%);
     color: white;
-    padding: 2rem 0;
+    padding: 0.8rem 0;
     margin-top: 0; /* Убран отступ от шапки */
 }
 
 .breadcrumb {
-    margin-bottom: 1rem;
-    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+    font-size: 0.8rem;
     opacity: 0.8;
 }
 
@@ -575,12 +575,12 @@ html {
 }
 
 .page-title {
-    font-size: 2.5rem;
+    font-size: 2rem;
     font-weight: 700;
-    margin-bottom: 1rem;
+    margin-bottom: 0.3rem;
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: 0.6rem;
 }
 
 .page-subtitle {
@@ -590,7 +590,8 @@ html {
 }
 
 .content-section {
-    padding: 3rem 0;
+    padding: 2rem 0;
+    margin-top: 80px; /* Отступ для фиксированной навигации Мангистау */
 }
 
 .content-wrapper {
@@ -1866,92 +1867,146 @@ html {
     }
 }
 
-/* Mangistau Navigation Styles */
+/* Compact Vertical Navigation */
+.mangistau-nav {
+    background: #F8F6ED;
+    border-bottom: 1px solid #BFE0F7;
+    padding: 0.4rem 0;
+    position: fixed;
+    top: 50px;
+    left: 0;
+    right: 0;
+    z-index: 50;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    transform: translateY(0);
+    transition: transform 0.3s ease-in-out;
+}
+
+.mangistau-nav.hidden {
+    transform: translateY(-100%);
+}
+
 .mangistau-navigation {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 2rem;
-    justify-content: center;
-    align-items: flex-start;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.3rem;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
-.nav-section {
+.nav-category {
     background: white;
-    border-radius: 8px;
-    padding: 1rem;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    min-width: 200px;
-    flex: 1;
-    max-width: 250px;
+    border: 1px solid #BFE0F7;
+    border-radius: 4px;
+    padding: 0.4rem;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
 }
 
-.nav-section h4 {
-    color: #1E4EBD;
-    font-size: 1rem;
-    margin-bottom: 0.8rem;
+.nav-category-title {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
-    border-bottom: 1px solid #BFE0F7;
-    padding-bottom: 0.5rem;
+    gap: 0.3rem;
+    color: #1E4EBD;
+    font-size: 0.7rem;
+    font-weight: 600;
+    margin-bottom: 0.3rem;
+    padding-bottom: 0.2rem;
+    border-bottom: 1px solid #E5E5E5;
 }
 
-.nav-section h4 i {
+.nav-category-title i {
+    font-size: 0.6rem;
     color: #2149B1;
-    font-size: 0.9rem;
 }
 
-.nav-item {
+.nav-tab {
     display: block;
-    color: #333;
+    padding: 0.2rem 0.4rem;
+    background: transparent;
+    border: none;
+    border-radius: 2px;
+    color: #555;
     text-decoration: none;
-    padding: 0.4rem 0.5rem;
-    margin: 0.2rem 0;
-    border-radius: 4px;
-    transition: all 0.3s ease;
-    font-size: 0.9rem;
-    position: relative;
+    font-size: 0.7rem;
+    font-weight: 400;
+    transition: all 0.2s ease;
+    text-align: left;
+    line-height: 1.3;
 }
 
-.nav-item:hover {
-    background-color: #F8F6ED;
+.nav-tab:hover {
+    background: #F0F8FF;
     color: #1E4EBD;
-    transform: translateX(3px);
 }
 
-.nav-item.active {
-    background-color: #BFE0F7;
-    color: #1E4EBD;
+.nav-tab.active {
+    background: #1E4EBD;
+    color: white;
     font-weight: 500;
 }
 
-.nav-item.active::before {
-    content: "▶";
-    position: absolute;
-    left: -15px;
-    color: #1E4EBD;
-    font-size: 0.8rem;
+.nav-tab.active::before {
+    content: "•";
+    margin-right: 0.3rem;
+    font-size: 0.6rem;
 }
 
-/* Responsive mangistau navigation */
+/* Responsive compact navigation */
 @media (max-width: 768px) {
+    .mangistau-nav {
+        top: 50px;
+    }
+    
     .mangistau-navigation {
-        flex-direction: column;
-        gap: 1rem;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.2rem;
     }
     
-    .nav-section {
-        min-width: auto;
-        max-width: none;
-        width: 100%;
+    .nav-category {
+        padding: 0.3rem;
     }
     
-    .nav-section h4 {
-        font-size: 0.9rem;
+    .nav-tab {
+        font-size: 0.65rem;
+        padding: 0.15rem 0.3rem;
     }
     
-    .nav-item {
-        font-size: 0.85rem;
+    .nav-category-title {
+        font-size: 0.65rem;
+        margin-bottom: 0.2rem;
+    }
+    
+    .content-section {
+        margin-top: 120px; /* Больший отступ для мобильных */
+    }
+}
+
+@media (max-width: 480px) {
+    .mangistau-nav {
+        padding: 0.3rem 0;
+        top: 50px;
+    }
+    
+    .mangistau-navigation {
+        grid-template-columns: 1fr;
+        gap: 0.2rem;
+    }
+    
+    .nav-category {
+        padding: 0.3rem;
+    }
+    
+    .nav-tab {
+        font-size: 0.6rem;
+        padding: 0.15rem 0.25rem;
+    }
+    
+    .nav-category-title {
+        font-size: 0.6rem;
+    }
+    
+    .content-section {
+        margin-top: 200px; /* Еще больший отступ для очень маленьких экранов */
     }
 }
 
@@ -2123,12 +2178,6 @@ html {
 .wiki-article em {
     font-style: italic;
     color: #555;
-    display: block;
-    margin: 1rem 0;
-    padding: 1rem;
-    background: #F8F6ED;
-    border-left: 4px solid #BFE0F7;
-    border-radius: 4px;
 }
 
 .wiki-article .wiki-image {
