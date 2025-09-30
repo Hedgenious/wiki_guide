@@ -28,18 +28,18 @@ body {
     line-height: 1.6;
     color: #1E4EBD;
     background-color: #F8F6ED;
-    padding-top: 100px; /* Отступ для фиксированной шапки */
+    padding-top: 120px; /* Увеличенный отступ для фиксированной шапки */
 }
 
 @media (max-width: 768px) {
     body {
-        padding-top: 140px; /* Больший отступ для мобильных устройств */
+        padding-top: 160px; /* Увеличенный отступ для мобильных устройств */
     }
 }
 
 @media (max-width: 480px) {
     body {
-        padding-top: 120px; /* Отступ для очень маленьких экранов */
+        padding-top: 150px; /* Увеличенный отступ для очень маленьких экранов */
     }
 }
 
@@ -132,6 +132,7 @@ body {
     color: white;
     padding: 4rem 0;
     text-align: center;
+    margin-top: 2rem; /* Дополнительный отступ от шапки */
 }
 
 .hero-title {
@@ -432,6 +433,14 @@ body {
         align-items: center;
     }
     
+    .hero {
+        margin-top: 3rem; /* Больший отступ на мобильных */
+    }
+    
+    .page-hero {
+        margin-top: 2rem; /* Больший отступ на мобильных */
+    }
+    
     .section-title {
         font-size: 2rem;
     }
@@ -466,6 +475,11 @@ body {
     
     .hero {
         padding: 2rem 0;
+        margin-top: 4rem; /* Еще больший отступ на очень маленьких экранах */
+    }
+    
+    .page-hero {
+        margin-top: 3rem; /* Больший отступ на очень маленьких экранах */
     }
     
     .section {
@@ -535,6 +549,7 @@ html {
     background: linear-gradient(135deg, #1E4EBD 0%, #2149B1 100%);
     color: white;
     padding: 3rem 0;
+    margin-top: 1rem; /* Дополнительный отступ от шапки */
 }
 
 .breadcrumb {
