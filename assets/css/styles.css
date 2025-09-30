@@ -1737,3 +1737,124 @@ html {
         font-size: 0.8rem;
     }
 }
+
+/* Sitemap Styles */
+.section-subtitle {
+    text-align: center;
+    color: #666;
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+    font-style: italic;
+}
+
+.sitemap-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.sitemap-category {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e0e0e0;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.sitemap-category:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+}
+
+.sitemap-category h3 {
+    color: #1E4EBD;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    border-bottom: 2px solid #BFE0F7;
+    padding-bottom: 0.5rem;
+}
+
+.sitemap-category h3 i {
+    color: #2149B1;
+    font-size: 1.1rem;
+}
+
+.sitemap-category ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sitemap-category li {
+    margin-bottom: 0.5rem;
+}
+
+.sitemap-category a {
+    color: #333;
+    text-decoration: none;
+    display: block;
+    padding: 0.3rem 0;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    position: relative;
+    padding-left: 1rem;
+}
+
+.sitemap-category a:hover {
+    color: #1E4EBD;
+    background-color: #F8F6ED;
+    padding-left: 1.5rem;
+}
+
+.sitemap-category a::before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    color: #BFE0F7;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.sitemap-category a:hover::before {
+    color: #1E4EBD;
+    transform: translateX(2px);
+}
+
+/* Responsive sitemap */
+@media (max-width: 768px) {
+    .sitemap-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .sitemap-category {
+        padding: 1rem;
+    }
+    
+    .sitemap-category h3 {
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .section-subtitle {
+        font-size: 1rem;
+    }
+    
+    .sitemap-category {
+        padding: 0.8rem;
+    }
+    
+    .sitemap-category h3 {
+        font-size: 1rem;
+    }
+    
+    .sitemap-category a {
+        font-size: 0.9rem;
+    }
+}
