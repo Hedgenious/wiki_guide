@@ -1,0 +1,1114 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тест по регистрации в Википедии - DaDaSchool Wiki Guide</title>
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Test-specific styles */
+        .test-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .test-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .test-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #1E4EBD;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .test-subtitle {
+            font-size: 1.2rem;
+            color: #4A5568;
+            margin-bottom: 2rem;
+        }
+
+        .test-progress {
+            background: #F8F6ED;
+            border: 1px solid #BFE0F7;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .progress-bar {
+            background: #E2E8F0;
+            border-radius: 8px;
+            height: 12px;
+            overflow: hidden;
+            margin-bottom: 1rem;
+        }
+
+        .progress-fill {
+            background: linear-gradient(135deg, #1E4EBD 0%, #2149B1 100%);
+            height: 100%;
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        .progress-text {
+            text-align: center;
+            font-weight: 600;
+            color: #1E4EBD;
+        }
+
+        .question-card {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 20px rgba(30, 78, 189, 0.1);
+            border: 1px solid #BFE0F7;
+            display: none;
+        }
+
+        .question-card.active {
+            display: block;
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        .question-number {
+            background: linear-gradient(135deg, #1E4EBD 0%, #2149B1 100%);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .question-text {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #1E4EBD;
+            margin-bottom: 1.5rem;
+            line-height: 1.4;
+        }
+
+        .options-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .option {
+            background: #F8F6ED;
+            border: 2px solid #BFE0F7;
+            border-radius: 12px;
+            padding: 1rem 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .option:hover {
+            background: #E6F3FF;
+            border-color: #1E4EBD;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(30, 78, 189, 0.15);
+        }
+
+        .option.selected {
+            background: #E6F3FF;
+            border-color: #1E4EBD;
+            box-shadow: 0 4px 12px rgba(30, 78, 189, 0.2);
+        }
+
+        .option.correct {
+            background: #F0FFF4;
+            border-color: #38B2AC;
+            color: #22543D;
+        }
+
+        .option.incorrect {
+            background: #FFF5F5;
+            border-color: #FEB2B2;
+            color: #742A2A;
+        }
+
+        .option-radio {
+            width: 20px;
+            height: 20px;
+            border: 2px solid #1E4EBD;
+            border-radius: 50%;
+            position: relative;
+            flex-shrink: 0;
+        }
+
+        .option-radio::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 10px;
+            height: 10px;
+            background: #1E4EBD;
+            border-radius: 50%;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .option.selected .option-radio::after {
+            opacity: 1;
+        }
+
+        .option-text {
+            font-size: 1.1rem;
+            font-weight: 500;
+            line-height: 1.4;
+        }
+
+        .test-controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 2rem;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #1E4EBD 0%, #2149B1 100%);
+            color: white;
+            box-shadow: 0 4px 15px rgba(30, 78, 189, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(30, 78, 189, 0.4);
+        }
+
+        .btn-primary:disabled {
+            background: #E2E8F0;
+            color: #A0AEC0;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #1E4EBD;
+            border: 2px solid #1E4EBD;
+        }
+
+        .btn-secondary:hover {
+            background: #1E4EBD;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .results-container {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            margin-top: 2rem;
+            box-shadow: 0 4px 20px rgba(30, 78, 189, 0.1);
+            border: 1px solid #BFE0F7;
+            display: none;
+        }
+
+        .results-container.show {
+            display: block;
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        .results-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .results-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #1E4EBD;
+            margin-bottom: 1rem;
+        }
+
+        .score-display {
+            background: linear-gradient(135deg, #F8F6ED 0%, #F0F4F8 100%);
+            border: 1px solid #BFE0F7;
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .score-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: #1E4EBD;
+            margin-bottom: 0.5rem;
+        }
+
+        .score-text {
+            font-size: 1.2rem;
+            color: #4A5568;
+            margin-bottom: 1rem;
+        }
+
+        .score-description {
+            font-size: 1rem;
+            color: #4A5568;
+            line-height: 1.6;
+        }
+
+        .results-actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .feedback-section {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid #BFE0F7;
+        }
+
+        .feedback-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #1E4EBD;
+            margin-bottom: 1rem;
+        }
+
+        .feedback-item {
+            background: #F8F6ED;
+            border: 1px solid #BFE0F7;
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .feedback-question {
+            font-weight: 600;
+            color: #1E4EBD;
+            margin-bottom: 0.5rem;
+        }
+
+        .feedback-answer {
+            color: #4A5568;
+            margin-bottom: 0.5rem;
+        }
+
+        .feedback-explanation {
+            color: #4A5568;
+            font-style: italic;
+        }
+
+        .feedback-correct {
+            border-left: 4px solid #38B2AC;
+        }
+
+        .feedback-incorrect {
+            border-left: 4px solid #FEB2B2;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .test-container {
+                padding: 1rem;
+            }
+
+            .test-title {
+                font-size: 2rem;
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .question-card {
+                padding: 1.5rem;
+            }
+
+            .question-text {
+                font-size: 1.1rem;
+            }
+
+            .option {
+                padding: 0.8rem 1rem;
+            }
+
+            .option-text {
+                font-size: 1rem;
+            }
+
+            .test-controls {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .results-actions {
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .test-title {
+                font-size: 1.8rem;
+            }
+
+            .question-card {
+                padding: 1rem;
+            }
+
+            .option {
+                padding: 0.6rem 0.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <h1 class="logo">
+                    <img src="../assets/images/logo_dada_2.svg" alt="DaDa School" class="logo-image">
+                    DaDa School Wiki Guide
+                </h1>
+                <nav class="nav">
+                    <a href="../index.html" class="nav-link">🏠 Главная</a>
+                    <a href="registration.html" class="nav-link">📝 Регистрация</a>
+                    <a href="test-registration.html" class="nav-link active">🎓 Тест</a>
+                    <a href="nickname.html" class="nav-link">👤 Никнейм</a>
+                    <a href="mangistau/index.html" class="nav-link">🌍 Мангистау 2024</a>
+                    <a href="assignment.html" class="nav-link">❓ Задание</a>
+                    <a href="hall-of-fame.html" class="nav-link">‼️ Зал славы</a>
+                    <a href="faq.html" class="nav-link">❓ Вопросы</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="main">
+        <section class="page-hero">
+            <div class="container">
+                <div class="breadcrumb">
+                    <a href="../index.html">Главная</a> → <a href="registration.html">Регистрация</a> → Тест
+                </div>
+                <h1 class="page-title">
+                    <i class="fas fa-graduation-cap"></i>
+                    Тест по регистрации в Википедии
+                </h1>
+                <p class="page-subtitle">
+                    Проверьте свои знания о правилах и преимуществах регистрации в Википедии
+                </p>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <div class="container">
+                <div class="test-container">
+                    <div class="test-header">
+                        <h1 class="test-title">
+                            <i class="fas fa-question-circle"></i>
+                            Тест по регистрации в Википедии
+                        </h1>
+                        <p class="test-subtitle">
+                            Ответьте на вопросы, чтобы проверить свои знания о регистрации, правилах и преимуществах работы с Википедией
+                        </p>
+                    </div>
+
+                    <div class="test-progress">
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="progressFill"></div>
+                        </div>
+                        <div class="progress-text" id="progressText">Вопрос 1 из 10</div>
+                    </div>
+
+                    <!-- Question 1 -->
+                    <div class="question-card active" data-question="1">
+                        <div class="question-number">1</div>
+                        <div class="question-text">Какое основное преимущество регистрации в Википедии?</div>
+                        <div class="options-container">
+                            <div class="option" data-value="a">
+                                <div class="option-radio"></div>
+                                <div class="option-text">Возможность создавать и редактировать статьи</div>
+                            </div>
+                            <div class="option" data-value="b">
+                                <div class="option-radio"></div>
+                                <div class="option-text">Получение доступа к платному контенту</div>
+                            </div>
+                            <div class="option" data-value="c">
+                                <div class="option-radio"></div>
+                                <div class="option-text">Возможность скачивать статьи бесплатно</div>
+                            </div>
+                            <div class="option" data-value="d">
+                                <div class="option-radio"></div>
+                                <div class="option-text">Получение сертификата редактора</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Question 2 -->
+                    <div class="question-card" data-question="2">
+                        <div class="question-number">2</div>
+                        <div class="question-text">Что НЕ требуется для регистрации в Википедии?</div>
+                        <div class="options-container">
+                            <div class="option" data-value="a">
+                                <div class="option-radio"></div>
+                                <div class="option-text">Действующий email адрес</div>
+                            </div>
+                            <div class="option" data-value="b">
+                                <div class="option-radio"></div>
+                                <div class="option-text">Уникальное имя пользователя</div>
+                            </div>
+                            <div class="option" data-value="c">
+                                <div class="option-radio"></div>
+                                <div class="option-text">Пароль</div>
+                            </div>
+                            <div class="option" data-value="d">
+                                <div class="option-radio"></div>
+                                <div class="option-text">Подтверждение личности</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Question 3 -->
+                    <div class="question-card" data-question="3">
+                        <div class="question-number">3</div>
+                        <div class="question-text">Какое правило НЕ действует для зарегистрированных пользователей?</div>
+                        <div class="options-container">
+                            <div class="option" data-value="a">
+                                <div class="option-radio"></div>
+                                <div class="option-text">Соблюдение нейтральной точки зрения</div>
+                            </div>
+                            <div class="option" data-value="b">
+                                <div class="option-radio"></div>
+                                <div class="option-text">Использование проверяемых источников</div>
+                            </div>
+                            <div class="option" data-value="c">
+                                <div class="option-radio"></div>
+                                <div class="option-text">Создание статей только о себе</div>
+                            </div>
+                            <div class="option" data-value="d">
+                                <div class="option-radio"></div>
+                                <div class="option-text">Избегание плагиата</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Question 4 -->
+                    <div class="question-card" data-question="4">
+                        <div class="question-number">4</div>
+                        <div class="question-text">Что происходит с историей правок зарегистрированного пользователя?</div>
+                        <div class="options-container">
+                            <div class="option" data-value="a">
+                                <div class="option-radio"></div>
+                                <div class="option-text">Она сохраняется и привязана к имени пользователя</div>
+                            </div>
+                            <div class="option" data-value="b">
+                                <div class="option-radio"></div>
+                                <div class="option-text">Она удаляется через 30 дней</div>
+                            </div>
+                            <div class="option" data-value="c">
+                                <div class="option-radio"></div>
+                                <div class="option-text">Она доступна только администраторам</div>
+                            </div>
+                            <div class="option" data-value="d">
+                                <div class="option-radio"></div>
+                                <div class="option-text">Она не сохраняется</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Question 5 -->
+                    <div class="question-card" data-question="5">
+                        <div class="question-number">5</div>
+                        <div class="question-text">Какое преимущество дает регистрация при редактировании статей?</div>
+                        <div class="options-container">
+                            <div class="option" data-value="a">
+                                <div class="option-radio"></div>
+                                <div class="option-text">Возможность создавать страницы обсуждения</div>
+                            </div>
+                            <div class="option" data-value="b">
+                                <div class="option-radio"></div>
+                                <div class="option-text">Доступ к расширенным инструментам редактирования</div>
+                            </div>
+                            <div class="option" data-value="c">
+                                <div class="option-radio"></div>
+                                <div class="option-text">Возможность загружать изображения</div>
+                            </div>
+                            <div class="option" data-value="d">
+                                <div class="option-radio"></div>
+                                <div class="option-text">Все перечисленное выше</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Question 6 -->
+                    <div class="question-card" data-question="6">
+                        <div class="question-number">6</div>
+                        <div class="question-text">Что такое "страница участника" в Википедии?</div>
+                        <div class="options-container">
+                            <div class="option" data-value="a">
+                                <div class="option-radio"></div>
+                                <div class="option-text">Личная страница зарегистрированного пользователя</div>
+                            </div>
+                            <div class="option" data-value="b">
+                                <div class="option-radio"></div>
+                                <div class="option-text">Страница с правилами для участников</div>
+                            </div>
+                            <div class="option" data-value="c">
+                                <div class="option-radio"></div>
+                                <div class="option-text">Страница для жалоб на участников</div>
+                            </div>
+                            <div class="option" data-value="d">
+                                <div class="option-radio"></div>
+                                <div class="option-text">Страница с рейтингом участников</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Question 7 -->
+                    <div class="question-card" data-question="7">
+                        <div class="question-number">7</div>
+                        <div class="question-text">Какое требование к никнейму в Википедии является НЕПРАВИЛЬНЫМ?</div>
+                        <div class="options-container">
+                            <div class="option" data-value="a">
+                                <div class="option-radio"></div>
+                                <div class="option-text">Никнейм должен быть уникальным</div>
+                            </div>
+                            <div class="option" data-value="b">
+                                <div class="option-radio"></div>
+                                <div class="option-text">Никнейм не должен содержать рекламу</div>
+                            </div>
+                            <div class="option" data-value="c">
+                                <div class="option-radio"></div>
+                                <div class="option-text">Никнейм должен содержать только латинские буквы</div>
+                            </div>
+                            <div class="option" data-value="d">
+                                <div class="option-radio"></div>
+                                <div class="option-text">Никнейм не должен нарушать авторские права</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Question 8 -->
+                    <div class="question-card" data-question="8">
+                        <div class="question-number">8</div>
+                        <div class="question-text">Что такое "список наблюдения" в Википедии?</div>
+                        <div class="options-container">
+                            <div class="option" data-value="a">
+                                <div class="option-radio"></div>
+                                <div class="option-text">Список статей, которые пользователь хочет отслеживать</div>
+                            </div>
+                            <div class="option" data-value="b">
+                                <div class="option-radio"></div>
+                                <div class="option-text">Список заблокированных пользователей</div>
+                            </div>
+                            <div class="option" data-value="c">
+                                <div class="option-radio"></div>
+                                <div class="option-text">Список популярных статей</div>
+                            </div>
+                            <div class="option" data-value="d">
+                                <div class="option-radio"></div>
+                                <div class="option-text">Список администраторов</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Question 9 -->
+                    <div class="question-card" data-question="9">
+                        <div class="question-number">9</div>
+                        <div class="question-text">Какое преимущество дает регистрация при работе с изображениями?</div>
+                        <div class="options-container">
+                            <div class="option" data-value="a">
+                                <div class="option-radio"></div>
+                                <div class="option-text">Возможность загружать изображения без ограничений</div>
+                            </div>
+                            <div class="option" data-value="b">
+                                <div class="option-radio"></div>
+                                <div class="option-text">Доступ к галерее изображений</div>
+                            </div>
+                            <div class="option" data-value="c">
+                                <div class="option-radio"></div>
+                                <div class="option-text">Возможность создавать галереи изображений</div>
+                            </div>
+                            <div class="option" data-value="d">
+                                <div class="option-radio"></div>
+                                <div class="option-text">Все перечисленное выше</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Question 10 -->
+                    <div class="question-card" data-question="10">
+                        <div class="question-number">10</div>
+                        <div class="question-text">Что происходит при нарушении правил Википедии зарегистрированным пользователем?</div>
+                        <div class="options-container">
+                            <div class="option" data-value="a">
+                                <div class="option-radio"></div>
+                                <div class="option-text">Пользователь получает предупреждение</div>
+                            </div>
+                            <div class="option" data-value="b">
+                                <div class="option-radio"></div>
+                                <div class="option-text">Аккаунт может быть заблокирован</div>
+                            </div>
+                            <div class="option" data-value="c">
+                                <div class="option-radio"></div>
+                                <div class="option-text">Права редактирования могут быть ограничены</div>
+                            </div>
+                            <div class="option" data-value="d">
+                                <div class="option-radio"></div>
+                                <div class="option-text">Все перечисленное выше</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="test-controls">
+                        <button class="btn btn-secondary" id="prevBtn" disabled>
+                            <i class="fas fa-arrow-left"></i>
+                            Назад
+                        </button>
+                        <button class="btn btn-primary" id="nextBtn">
+                            Далее
+                            <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+
+                    <div class="results-container" id="resultsContainer">
+                        <div class="results-header">
+                            <h2 class="results-title">
+                                <i class="fas fa-trophy"></i>
+                                Результаты теста
+                            </h2>
+                        </div>
+
+                        <div class="score-display">
+                            <div class="score-number" id="scoreNumber">0</div>
+                            <div class="score-text" id="scoreText">из 10 правильных ответов</div>
+                            <div class="score-description" id="scoreDescription"></div>
+                        </div>
+
+                        <div class="results-actions">
+                            <button class="btn btn-primary" id="retakeBtn">
+                                <i class="fas fa-redo"></i>
+                                Пройти тест заново
+                            </button>
+                            <a href="registration.html" class="btn btn-secondary">
+                                <i class="fas fa-book"></i>
+                                Изучить материал
+                            </a>
+                        </div>
+
+                        <div class="feedback-section" id="feedbackSection">
+                            <h3 class="feedback-title">
+                                <i class="fas fa-lightbulb"></i>
+                                Разбор ответов
+                            </h3>
+                            <div id="feedbackContent"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Wiki Guide</h3>
+                    <p>Полное руководство по работе с Википедией для детей и начинающих</p>
+                    <div class="footer-wikipedia-logo">
+                        <img src="../assets/images/Wikipedia-logo-v2.svg.png" alt="Логотип Википедии" class="footer-wikipedia-logo-img">
+                        <span>Википедия</span>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Быстрые ссылки</h3>
+                    <ul>
+                        <li><a href="registration.html">Регистрация</a></li>
+                        <li><a href="editing.html">Редактирование</a></li>
+                        <li><a href="assignment.html">Задание</a></li>
+                        <li><a href="hall-of-fame.html">Зал славы</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Поддержка</h3>
+                    <ul>
+                        <li><a href="faq.html">FAQ</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 DaDa School Wiki Guide. Created and edited by <a href="https://ru.wikipedia.org/wiki/User:Hedgenious" target="_blank" style="color: #BFE0F7;">Hedgenious</a>. Распространяется под лицензией MIT.</p>
+                <p><a href="https://schooldada.com/project" target="_blank" style="color: #BFE0F7;">DaDa School Official Website</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../assets/js/script.js"></script>
+    <script>
+        // Test data with correct answers
+        const testData = {
+            questions: [
+                {
+                    question: "Какое основное преимущество регистрации в Википедии?",
+                    options: [
+                        "Возможность создавать и редактировать статьи",
+                        "Получение доступа к платному контенту",
+                        "Возможность скачивать статьи бесплатно",
+                        "Получение сертификата редактора"
+                    ],
+                    correct: "a",
+                    explanation: "Регистрация в Википедии дает возможность создавать и редактировать статьи, что является основным преимуществом для участников."
+                },
+                {
+                    question: "Что НЕ требуется для регистрации в Википедии?",
+                    options: [
+                        "Действующий email адрес",
+                        "Уникальное имя пользователя",
+                        "Пароль",
+                        "Подтверждение личности"
+                    ],
+                    correct: "d",
+                    explanation: "Для регистрации в Википедии НЕ требуется подтверждение личности. Достаточно email, уникального имени пользователя и пароля."
+                },
+                {
+                    question: "Какое правило НЕ действует для зарегистрированных пользователей?",
+                    options: [
+                        "Соблюдение нейтральной точки зрения",
+                        "Использование проверяемых источников",
+                        "Создание статей только о себе",
+                        "Избегание плагиата"
+                    ],
+                    correct: "c",
+                    explanation: "Создание статей только о себе НЕ является правилом Википедии. Наоборот, это не рекомендуется."
+                },
+                {
+                    question: "Что происходит с историей правок зарегистрированного пользователя?",
+                    options: [
+                        "Она сохраняется и привязана к имени пользователя",
+                        "Она удаляется через 30 дней",
+                        "Она доступна только администраторам",
+                        "Она не сохраняется"
+                    ],
+                    correct: "a",
+                    explanation: "История правок зарегистрированного пользователя сохраняется и привязана к его имени пользователя."
+                },
+                {
+                    question: "Какое преимущество дает регистрация при редактировании статей?",
+                    options: [
+                        "Возможность создавать страницы обсуждения",
+                        "Доступ к расширенным инструментам редактирования",
+                        "Возможность загружать изображения",
+                        "Все перечисленное выше"
+                    ],
+                    correct: "d",
+                    explanation: "Регистрация дает все перечисленные преимущества: создание страниц обсуждения, доступ к расширенным инструментам и возможность загрузки изображений."
+                },
+                {
+                    question: "Что такое \"страница участника\" в Википедии?",
+                    options: [
+                        "Личная страница зарегистрированного пользователя",
+                        "Страница с правилами для участников",
+                        "Страница для жалоб на участников",
+                        "Страница с рейтингом участников"
+                    ],
+                    correct: "a",
+                    explanation: "Страница участника - это личная страница зарегистрированного пользователя, где он может рассказать о себе."
+                },
+                {
+                    question: "Какое требование к никнейму в Википедии является НЕПРАВИЛЬНЫМ?",
+                    options: [
+                        "Никнейм должен быть уникальным",
+                        "Никнейм не должен содержать рекламу",
+                        "Никнейм должен содержать только латинские буквы",
+                        "Никнейм не должен нарушать авторские права"
+                    ],
+                    correct: "c",
+                    explanation: "Никнейм НЕ должен содержать только латинские буквы. Можно использовать кириллицу и другие символы."
+                },
+                {
+                    question: "Что такое \"список наблюдения\" в Википедии?",
+                    options: [
+                        "Список статей, которые пользователь хочет отслеживать",
+                        "Список заблокированных пользователей",
+                        "Список популярных статей",
+                        "Список администраторов"
+                    ],
+                    correct: "a",
+                    explanation: "Список наблюдения - это список статей, которые пользователь хочет отслеживать на предмет изменений."
+                },
+                {
+                    question: "Какое преимущество дает регистрация при работе с изображениями?",
+                    options: [
+                        "Возможность загружать изображения без ограничений",
+                        "Доступ к галерее изображений",
+                        "Возможность создавать галереи изображений",
+                        "Все перечисленное выше"
+                    ],
+                    correct: "d",
+                    explanation: "Регистрация дает все перечисленные преимущества при работе с изображениями."
+                },
+                {
+                    question: "Что происходит при нарушении правил Википедии зарегистрированным пользователем?",
+                    options: [
+                        "Пользователь получает предупреждение",
+                        "Аккаунт может быть заблокирован",
+                        "Права редактирования могут быть ограничены",
+                        "Все перечисленное выше"
+                    ],
+                    correct: "d",
+                    explanation: "При нарушении правил могут применяться все перечисленные меры: предупреждения, блокировка аккаунта или ограничение прав."
+                }
+            ]
+        };
+
+        // Test state
+        let currentQuestion = 0;
+        let answers = {};
+        let testCompleted = false;
+
+        // DOM elements
+        const progressFill = document.getElementById('progressFill');
+        const progressText = document.getElementById('progressText');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const resultsContainer = document.getElementById('resultsContainer');
+        const scoreNumber = document.getElementById('scoreNumber');
+        const scoreText = document.getElementById('scoreText');
+        const scoreDescription = document.getElementById('scoreDescription');
+        const feedbackContent = document.getElementById('feedbackContent');
+        const retakeBtn = document.getElementById('retakeBtn');
+
+        // Initialize test
+        function initTest() {
+            currentQuestion = 0;
+            answers = {};
+            testCompleted = false;
+            showQuestion(0);
+            updateProgress();
+            resultsContainer.classList.remove('show');
+        }
+
+        // Show specific question
+        function showQuestion(questionIndex) {
+            // Hide all questions
+            document.querySelectorAll('.question-card').forEach(card => {
+                card.classList.remove('active');
+            });
+
+            // Show current question
+            const currentCard = document.querySelector(`[data-question="${questionIndex + 1}"]`);
+            if (currentCard) {
+                currentCard.classList.add('active');
+            }
+
+            // Update buttons
+            prevBtn.disabled = questionIndex === 0;
+            
+            if (questionIndex === testData.questions.length - 1) {
+                nextBtn.innerHTML = '<i class="fas fa-check"></i> Завершить тест';
+            } else {
+                nextBtn.innerHTML = 'Далее <i class="fas fa-arrow-right"></i>';
+            }
+
+            // Load saved answer if exists
+            if (answers[questionIndex]) {
+                const option = currentCard.querySelector(`[data-value="${answers[questionIndex]}"]`);
+                if (option) {
+                    option.classList.add('selected');
+                }
+            }
+        }
+
+        // Update progress
+        function updateProgress() {
+            const progress = ((currentQuestion + 1) / testData.questions.length) * 100;
+            progressFill.style.width = `${progress}%`;
+            progressText.textContent = `Вопрос ${currentQuestion + 1} из ${testData.questions.length}`;
+        }
+
+        // Handle option selection
+        function handleOptionSelection(option) {
+            const questionCard = option.closest('.question-card');
+            const questionIndex = parseInt(questionCard.dataset.question) - 1;
+            
+            // Remove previous selection
+            questionCard.querySelectorAll('.option').forEach(opt => {
+                opt.classList.remove('selected');
+            });
+            
+            // Add selection to clicked option
+            option.classList.add('selected');
+            
+            // Save answer
+            answers[questionIndex] = option.dataset.value;
+        }
+
+        // Navigate to next question
+        function nextQuestion() {
+            if (currentQuestion < testData.questions.length - 1) {
+                currentQuestion++;
+                showQuestion(currentQuestion);
+                updateProgress();
+            } else {
+                completeTest();
+            }
+        }
+
+        // Navigate to previous question
+        function prevQuestion() {
+            if (currentQuestion > 0) {
+                currentQuestion--;
+                showQuestion(currentQuestion);
+                updateProgress();
+            }
+        }
+
+        // Complete test and show results
+        function completeTest() {
+            testCompleted = true;
+            
+            // Calculate score
+            let correctAnswers = 0;
+            testData.questions.forEach((question, index) => {
+                if (answers[index] === question.correct) {
+                    correctAnswers++;
+                }
+            });
+
+            const percentage = Math.round((correctAnswers / testData.questions.length) * 100);
+            
+            // Update score display
+            scoreNumber.textContent = correctAnswers;
+            scoreText.textContent = `из ${testData.questions.length} правильных ответов`;
+            
+            // Set description based on score
+            if (percentage >= 90) {
+                scoreDescription.textContent = 'Отлично! Вы отлично знаете правила регистрации в Википедии! 🎉';
+            } else if (percentage >= 70) {
+                scoreDescription.textContent = 'Хорошо! У вас есть хорошие знания о регистрации в Википедии! 👍';
+            } else if (percentage >= 50) {
+                scoreDescription.textContent = 'Неплохо! Рекомендуем изучить материал еще раз. 📚';
+            } else {
+                scoreDescription.textContent = 'Рекомендуем внимательно изучить руководство по регистрации. 📖';
+            }
+
+            // Generate feedback
+            generateFeedback(correctAnswers);
+            
+            // Show results
+            resultsContainer.classList.add('show');
+            
+            // Hide test controls
+            document.querySelector('.test-controls').style.display = 'none';
+        }
+
+        // Generate feedback for each question
+        function generateFeedback(correctAnswers) {
+            let feedbackHTML = '';
+            
+            testData.questions.forEach((question, index) => {
+                const userAnswer = answers[index];
+                const isCorrect = userAnswer === question.correct;
+                const correctOption = question.options[question.correct.charCodeAt(0) - 97];
+                
+                feedbackHTML += `
+                    <div class="feedback-item ${isCorrect ? 'feedback-correct' : 'feedback-incorrect'}">
+                        <div class="feedback-question">Вопрос ${index + 1}: ${question.question}</div>
+                        <div class="feedback-answer">Ваш ответ: ${userAnswer ? question.options[userAnswer.charCodeAt(0) - 97] : 'Не отвечен'}</div>
+                        <div class="feedback-explanation">${question.explanation}</div>
+                    </div>
+                `;
+            });
+            
+            feedbackContent.innerHTML = feedbackHTML;
+        }
+
+        // Retake test
+        function retakeTest() {
+            // Reset state
+            currentQuestion = 0;
+            answers = {};
+            testCompleted = false;
+            
+            // Reset UI
+            document.querySelectorAll('.question-card').forEach(card => {
+                card.classList.remove('active');
+                card.querySelectorAll('.option').forEach(option => {
+                    option.classList.remove('selected');
+                });
+            });
+            
+            // Show first question
+            showQuestion(0);
+            updateProgress();
+            
+            // Hide results
+            resultsContainer.classList.remove('show');
+            
+            // Show test controls
+            document.querySelector('.test-controls').style.display = 'flex';
+        }
+
+        // Event listeners
+        document.addEventListener('DOMContentLoaded', function() {
+            initTest();
+
+            // Option selection
+            document.addEventListener('click', function(e) {
+                if (e.target.closest('.option')) {
+                    handleOptionSelection(e.target.closest('.option'));
+                }
+            });
+
+            // Navigation buttons
+            nextBtn.addEventListener('click', nextQuestion);
+            prevBtn.addEventListener('click', prevQuestion);
+            retakeBtn.addEventListener('click', retakeTest);
+        });
+    </script>
+</body>
+</html>
