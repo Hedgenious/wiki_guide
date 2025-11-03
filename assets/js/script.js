@@ -115,3 +115,28 @@ document.addEventListener('DOMContentLoaded', function() {
 console.log('%c🎓 DaDa School Wiki Guide', 'color: #1E4EBD; font-size: 20px; font-weight: bold;');
 console.log('%cCreated by Hedgenious', 'color: #4A5568; font-size: 14px;');
 console.log('%c© 2025 DaDa School', 'color: #4A5568; font-size: 12px;');
+
+// Normalize navigation links site-wide to absolute paths under /wiki_guide/
+// This fixes broken links that point to the repository root instead of the project subpath
+document.addEventListener('DOMContentLoaded', function () {
+    const navMap = {
+        '🏠 Главная': '/wiki_guide/index.html',
+        '📝 Регистрация': '/wiki_guide/html/registration.html',
+        '🎓 Тест': '/wiki_guide/html/test-registration.html',
+        '👤 Никнейм': '/wiki_guide/html/nickname.html',
+        '🌍 Мангистау 2024': '/wiki_guide/mangistau/index.html',
+        '❓ Задание': '/wiki_guide/html/assignment.html',
+        '‼️ Зал славы': '/wiki_guide/html/hall-of-fame.html',
+        '❓ Вопросы': '/wiki_guide/faq.html'
+    };
+
+    // Normalize anchors whose visible text matches one of the keys above
+    document.querySelectorAll('a').forEach(a => {
+        if (!a || !a.textContent) return;
+        // Normalize whitespace and trim
+        const text = a.textContent.replace(/\s+/g, ' ').trim();
+        if (navMap[text]) {
+            a.setAttribute('href', navMap[text]);
+        }
+    });
+});
