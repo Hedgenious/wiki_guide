@@ -1,4 +1,4 @@
-// DaDa School Wiki Guide - Main JavaScript
+﻿// DADA School Wiki Guide - Main JavaScript
 
 // Smooth scrolling for anchor links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -112,9 +112,9 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // Console message
-console.log('%c🎓 DaDa School Wiki Guide', 'color: #1E4EBD; font-size: 20px; font-weight: bold;');
+console.log('%c🎓 DADA School Wiki Guide', 'color: #1E4EBD; font-size: 20px; font-weight: bold;');
 console.log('%cCreated by Hedgenious', 'color: #4A5568; font-size: 14px;');
-console.log('%c© 2025 DaDa School', 'color: #4A5568; font-size: 12px;');
+console.log('%c© 2025 DADA School', 'color: #4A5568; font-size: 12px;');
 
 // Normalize navigation links site-wide to absolute paths under /wiki_guide/
 // This fixes broken links that point to the repository root instead of the project subpath
@@ -140,3 +140,4 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 });
+

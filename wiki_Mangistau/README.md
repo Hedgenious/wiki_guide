@@ -1,6 +1,6 @@
-# Мангистау 2024: Путеводитель по природе
+﻿# Мангистау 2024: Путеводитель по природе
 
-Этот раздел содержит материалы образовательного проекта DaDa School о природе Мангистау — западного региона Казахстана.
+Этот раздел содержит материалы образовательного проекта DADA School о природе Мангистау — западного региона Казахстана.
 
 ## 📁 Структура папки
 
@@ -61,7 +61,7 @@
 
 ## 🌐 Веб-версия
 
-Все материалы интегрированы в веб-интерфейс DaDa School Wiki Guide:
+Все материалы интегрированы в веб-интерфейс DADA School Wiki Guide:
 - **Основная страница:** [mangistau.html](../mangistau.html)
 - **Скриншоты:** [../img_2_pages/](../img_2_pages/)
 
@@ -83,7 +83,7 @@
 
 ## 👥 Авторы
 
-Материал подготовлен учениками и преподавателями DaDa School во время экспедиции в Мангистау в 2024 году.
+Материал подготовлен учениками и преподавателями DADA School во время экспедиции в Мангистау в 2024 году.
 
 ## 📄 Лицензия
 
@@ -91,10 +91,11 @@
 
 ## 🔗 Связанные ресурсы
 
-- [DaDa School Official Website](https://schooldada.com/project)
-- [DaDa School Wiki Guide](../index.html)
+- [DADA School Official Website](https://schooldada.com/project)
+- [DADA School Wiki Guide](../index.html)
 - [Wikipedia User:Hedgenious](https://ru.wikipedia.org/wiki/User:Hedgenious)
 
 ---
 
-© 2025 DaDa School. Created and edited by Hedgenious.
+© 2025 DADA School. Created and edited by Hedgenious.
+

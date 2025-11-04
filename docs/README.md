@@ -1,4 +1,4 @@
-# DaDa School Wiki Guide
+﻿# DADA School Wiki Guide
 
 Полное руководство по работе с Википедией для детей и начинающих.
 
@@ -93,7 +93,7 @@ cd wiki_guide
 ## 🎨 Дизайн
 
 Сайт использует современный дизайн с:
-- Цветовая палитра DaDa School (синий #1E4EBD, желтый #F7E080)
+- Цветовая палитра DADA School (синий #1E4EBD, желтый #F7E080)
 - Адаптивный дизайн для всех устройств
 - Плавные анимации и переходы
 - Фиксированная шапка при скроллинге
@@ -109,7 +109,7 @@ cd wiki_guide
 ## 👥 Авторы
 
 - **Created and edited by:** [Hedgenious](https://ru.wikipedia.org/wiki/User:Hedgenious)
-- **Organization:** [DaDa School](https://schooldada.com/project)
+- **Organization:** [DADA School](https://schooldada.com/project)
 
 ## 📄 Лицензия
 
@@ -117,4 +117,4 @@ cd wiki_guide
 
 ---
 
-© 2025 DaDa School Wiki Guide. All rights reserved.
+© 2025 DADA School Wiki Guide. All rights reserved.
